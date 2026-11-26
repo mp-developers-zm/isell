@@ -2089,6 +2089,24 @@ body::before{animation:none!important;filter:none!important;inset:0!important}
   .dcx-btn{width:42px;height:42px;margin-top:-21px}.dcx-btn.prev{left:10px}.dcx-btn.next{right:10px}
 }
 @media (prefers-reduced-motion:reduce){.dcx-it,.dcx{transition:none}}
+
+/* catalog carousel on a light stage (no dark purple): soft pastel per product */
+.dcx{--dc1:#E9E0FF;--dc2:#FFFFFF;background:radial-gradient(60% 70% at 50% 38%,var(--dc2) 0%,var(--dc1) 62%,color-mix(in srgb,var(--dc1) 82%,#B9A4F0) 100%)!important;box-shadow:inset 0 1px 0 #fff,0 40px 70px -46px rgba(60,25,130,.45)!important}
+@property --dc1{syntax:'<color>';inherits:true;initial-value:#E9E0FF}
+@property --dc2{syntax:'<color>';inherits:true;initial-value:#FFFFFF}
+.dcx::before{display:none!important}
+.dcx::after{background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.35) 60%,rgba(255,255,255,.55))!important}
+.dcx-ghost{-webkit-text-stroke:1.5px rgba(91,46,158,.16);background:linear-gradient(180deg,rgba(91,46,158,.12),rgba(91,46,158,0) 80%);-webkit-background-clip:text;background-clip:text}
+.dcx-it img{filter:drop-shadow(0 24px 22px rgba(40,15,90,.28));-webkit-box-reflect:below 2px linear-gradient(transparent 78%,rgba(255,255,255,.35))}
+.dcx-it[data-role=left],.dcx-it[data-role=right]{filter:blur(1.5px)}
+.dcx-it[data-role=back-l],.dcx-it[data-role=back-r]{filter:blur(3px)}
+.dcx .cg-floor{background:radial-gradient(50% 50%,rgba(125,75,219,.22),transparent)!important}
+.dcx-btn{color:var(--hxk,#211336);background:rgba(255,255,255,.7);box-shadow:inset 0 0 0 1px rgba(91,46,158,.18),0 10px 20px -12px rgba(40,15,90,.4)}
+.dcx-btn:hover{background:#fff}
+.dcx .cg-ri-info{color:var(--hxk,#211336);background:rgba(255,255,255,.82)!important;box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(91,46,158,.1),0 18px 34px -18px rgba(40,15,90,.45)!important}
+.dcx .cg-ri-info small{color:var(--ink3)}.dcx .cg-ri-info span{color:var(--hxp)}
+.dcx .cg-ri-info .btn.w{background:#5B2E9E!important;color:#fff}
+.dcx-dots i{background:rgba(91,46,158,.22)}.dcx-dots i.on{background:#5B2E9E}
 </style></head><body>
 <div id="splash"><div id="splashLogo"></div></div>
 <div class="announce" aria-label="Store news"><div id="annc"></div></div>
@@ -3978,7 +3996,7 @@ function cgHelpResult(){
 }
 
 /* featured products: depth carousel with role slots, a colour crossfade and a ghost brand word (MotionSites "depth carousel" technique) */
-const DCX_BG = [['#2B1266','#7A4BDB'],['#0F2A5C','#3F7BE0'],['#3D0E45','#B04FC9'],['#0D3A43','#2FA3A8'],['#2A1A5E','#8E6BFF'],['#40140F','#D9643A'],['#11324A','#4FA0D8'],['#33104E','#C26BFF']];
+const DCX_BG = [['#E9E0FF','#FFFFFF'],['#DDE9FF','#FFFFFF'],['#F4E2F8','#FFFFFF'],['#DDF1EF','#FFFFFF'],['#E6E1FF','#FFFFFF'],['#FBE8DF','#FFFFFF'],['#DEEDF8','#FFFFFF'],['#EFE1FF','#FFFFFF']];
 function mountCgRing(){
   const root = $('#cgRing'); if (!root || root.dataset.on) return; root.dataset.on = 1;
   const items = $$('.dcx-it', root), dots = $$('.dcx-dots i', root), R0 = cgRingList(), N = items.length, ghost = $('#dcxGhost');
