@@ -2107,6 +2107,32 @@ body::before{animation:none!important;filter:none!important;inset:0!important}
 .dcx .cg-ri-info small{color:var(--ink3)}.dcx .cg-ri-info span{color:var(--hxp)}
 .dcx .cg-ri-info .btn.w{background:#5B2E9E!important;color:#fff}
 .dcx-dots i{background:rgba(91,46,158,.22)}.dcx-dots i.on{background:#5B2E9E}
+
+/* ===== compliance: glass certificate cards with a holographic seal ===== */
+.cp-grid .tile.cp{min-height:220px;justify-content:space-between;gap:16px;padding:18px 20px 20px;border-radius:26px;transform-style:preserve-3d;overflow:hidden;
+  background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.5) 55%,rgba(236,226,255,.66))!important;box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),inset 0 -12px 26px -16px rgba(125,75,219,.35),0 26px 46px -30px rgba(40,15,90,.5)!important}
+.cp-grid .tile.cp::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.75) 47%,rgba(212,194,255,.45) 52%,transparent 64%);transform:translateX(-120%);transition:transform 1.1s cubic-bezier(.22,1,.36,1)}
+.cp-grid .tile.cp:hover::after{transform:translateX(120%)}
+.cp-top{display:flex;align-items:center;justify-content:space-between;transform:translateZ(36px)}
+.cp-seal{position:relative;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#fff;isolation:isolate}
+.cp-seal i{position:absolute;inset:0;z-index:-1;border-radius:50%;background:conic-gradient(from 0deg,#A27BFF,#7DD3FC,#F0ABFC,#FDE68A,#A27BFF);animation:cpSpin 9s linear infinite;animation-delay:calc(var(--d) * -2s)}
+.cp-seal::after{content:"";position:absolute;inset:4px;z-index:-1;border-radius:50%;background:linear-gradient(180deg,#7A48D6,#4A1FA0);box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}
+.cp-seal svg{width:24px;height:24px}
+@keyframes cpSpin{to{transform:rotate(360deg)}}
+.cp-ok{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 11px 0 8px;border-radius:999px;font:600 11px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;color:#12804F;background:rgba(18,147,106,.1);box-shadow:inset 0 0 0 1px rgba(18,147,106,.2)}
+.cp-ok svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:22;stroke-dashoffset:22}
+.rv.in .cp-ok svg{transition:stroke-dashoffset .7s cubic-bezier(.22,1,.36,1);transition-delay:calc(.5s + var(--d) * .15s);stroke-dashoffset:0}
+.cp-mid{transform:translateZ(24px)}
+.cp-auth{display:block;font:700 clamp(26px,2.6vw,34px)/1 var(--f-d);letter-spacing:-.04em;color:var(--hxk)}
+.cp-mid small{display:block;margin-top:6px;font-size:12.5px;line-height:1.35;color:var(--ink2);max-width:34ch}
+.cp-num{display:flex;flex-direction:column;gap:4px;padding-top:12px;border-top:1px dashed rgba(91,46,158,.22);transform:translateZ(16px)}
+.cp-num span{font:500 11px var(--f-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--hxp)}
+.cp-num b{font:600 clamp(17px,1.5vw,20px) var(--f-ui);letter-spacing:.02em;color:var(--hxk);overflow-wrap:anywhere}
+.cp-seal{flex:none}
+@media (max-width:640px){.cp-grid{grid-template-columns:1fr!important}.cp-grid .tile.cp{min-height:0;gap:14px}.cp-mid small{max-width:none}}
+.cp-cta{display:flex;justify-content:center;margin-top:22px}
+.cp-cta .hx-pill svg{width:18px;height:18px}
+@media (prefers-reduced-motion:reduce){.cp-seal i{animation:none}.cp-ok svg{stroke-dashoffset:0}}
 </style></head><body>
 <div id="splash"><div id="splashLogo"></div></div>
 <div class="announce" aria-label="Store news"><div id="annc"></div></div>
@@ -3667,7 +3693,10 @@ function secProfile(){
     const values = [['Customer first','Every sale and every repair starts with what you need.'],['Innovation','New technology, new ideas, better ways to serve.'],['Effective & efficient delivery','The right product, on time, every time.'],['Transparency','Clear prices, honest advice and open dealings.'],['Team work','One team across both of our shops.'],['Business integrity','High ethics are our company culture.']];
   const brands = ['Samsung','Apple','Lenovo','HP','Microsoft','Dell','Canon','Infinix','Huawei'];
   const clients = [['First Quantum Mining','first-quantum.svg','Mining'],['Fast Mobile Centre','fast-mobile-centre.webp','Retail'],['Reload Logistics','reload-logistics.svg','Logistics'],['Cgrate Zambia (543)','cgrate-543.svg','Payments'],['Ministry of Health','ministry-of-health.webp','Government'],['Archdiocese of Lusaka','archdiocese-lusaka.webp','Faith']];
-  const comp = [['PACRA','Registration No.','120170002339'],['ZRA','Tax Identification No.','1004130848'],['ZPPA','Registration No.','34635'],['ZICTA','Dealership Licence','SET/RDL/3624']];
+  const comp = [['PACRA','Registration No.','120170002339','Patents and Companies Registration Agency','<path d="M4 20h16M6 20V10M10 20V10M14 20V10M18 20V10M3 10l9-6 9 6z"/>'],
+    ['ZRA','Tax Identification No.','1004130848','Zambia Revenue Authority','<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/>'],
+    ['ZPPA','Registration No.','34635','Zambia Public Procurement Authority','<path d="M4 7h16v13H4z"/><path d="M9 7V4h6v3M4 12h16"/><path d="M11 12v2h2v-2"/>'],
+    ['ZICTA','Dealership Licence','SET/RDL/3624','Zambia Information and Communications Technology Authority','<path d="M12 20v-6"/><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/>']];
   const facts = [['Founded','22 March 2017'],['Ownership','Fully Zambian'],['Shops','Rotana Mall & Liberty Mall'],['Registered','PACRA, ZRA, ZPPA'],['Licensed','ZICTA dealer'],['Brands','Samsung, Apple, HP & more']];
   return `<div class="ap">  <section class="ap-hero" id="pfHero">
     <div class="ap-plate" aria-hidden="true"><video id="apVid" muted playsinline autoplay preload="auto" poster="img/hero-silk.webp" src="img/hero-silk.mp4"></video></div>
@@ -3722,7 +3751,12 @@ function secProfile(){
     <div class="sl-tiles six rv cl-grid">${clients.map(([a, logo, sector], i) => `<div class="tile cl" data-tilt style="--d:${i}"><span class="cl-logo">${logo ? `<img src="img/clients/${logo}" alt="${esc(a)} logo" loading="lazy" decoding="async" draggable="false">` : `<i class="cl-mono" aria-hidden="true">FMC</i>`}</span><span class="cl-txt"><b>${a}</b><small>${sector}</small></span></div>`).join('')}</div>`)}
 
   ${slide('compliance', 'Compliance', `<div class="sl-top"><h2 class="sl-h rv">Our compliance</h2><p class="sl-p rv d1">A private limited company that meets all compliance requirements. Registration documents are available to any customer on request.</p></div>
-    <div class="sl-tiles four rv">${comp.map(([a, b, n], i) => `<div class="tile"><b class="num sm">${n}</b><span>${a} · ${b}</span>${I.check}</div>`).join('')}</div>`)}
+    <div class="sl-tiles four rv cp-grid">${comp.map(([a, b, n, full, ico], i) => `<div class="tile cp" data-tilt style="--d:${i}">
+      <div class="cp-top"><span class="cp-seal" aria-hidden="true"><i></i>${ic(ico)}</span><span class="cp-ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4 8-9"/></svg>Verified</span></div>
+      <div class="cp-mid"><b class="cp-auth">${a}</b><small>${full}</small></div>
+      <div class="cp-num"><span>${b}</span><b class="num">${n}</b></div>
+    </div>`).join('')}</div>
+    <div class="cp-cta rv d1"><a class="hx-pill dk" href="${esc(waLink('Hi iSell! Please send me copies of your registration documents.'))}" data-wa="Hi iSell! Please send me copies of your registration documents." target="_blank" rel="noopener">${pfWa}Request our documents on WhatsApp</a></div>`)}
 
   </div>`;
 }
