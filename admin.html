@@ -6,7 +6,7 @@
 <title>iSell Admin</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Fredoka:wght@600;700&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme:light;
@@ -406,6 +406,44 @@ td .two b{display:block;font-weight:600}
 @media (max-width:760px){.banner{flex-wrap:wrap}.banner>span{flex:1 1 calc(100% - 34px)!important}}
 .logo3d{text-transform:none;letter-spacing:0}.logo .logo3d{display:block;width:118px;height:auto;filter:drop-shadow(0 6px 10px rgba(59,22,128,.18))}.side .logo .logo3d{width:100px}.gcard .logo .logo3d{width:150px}
 #receipt .rlogo .logo3d{width:150px;height:auto}
+
+/* ===== Theme: match the iSell website (Apple-style liquid glass, Inter Tight + Inter), 27 Nov 2026 ===== */
+:root{
+  --f-ui:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --f-d:"Inter Tight","Inter",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --glass:linear-gradient(135deg,rgba(255,255,255,.66),rgba(255,255,255,.36) 55%,rgba(255,255,255,.5));
+  --rim:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 1px rgba(255,255,255,.45),inset 0 0 0 1px rgba(255,255,255,.5);
+  --lift:0 1px 2px rgba(31,16,60,.05),0 26px 50px -30px rgba(31,16,60,.38);
+  --gloss:linear-gradient(180deg,rgba(146,104,240,.96),rgba(98,52,176,.96) 55%,rgba(78,38,150,.98));
+  --gloss-sh:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -3px 8px rgba(40,10,90,.35),0 12px 26px -12px rgba(91,46,158,.75);
+}
+html{background:#F1EFF7}
+body{background:transparent;letter-spacing:-.006em}
+/* the website's drifting colour light */
+.silk{inset:-15%!important;background:radial-gradient(38% 34% at 14% 18%,rgba(162,123,255,.42),transparent 70%),radial-gradient(34% 30% at 88% 26%,rgba(255,166,214,.3),transparent 70%),radial-gradient(40% 36% at 62% 86%,rgba(130,176,255,.3),transparent 70%),radial-gradient(30% 28% at 30% 70%,rgba(190,160,255,.28),transparent 70%),#F3F1F8!important;filter:blur(30px);animation:admDrift 26s ease-in-out infinite alternate}
+@keyframes admDrift{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-3%,2%,0) scale(1.06)}100%{transform:translate3d(3%,-2%,0) scale(1.02)}}
+/* headings and big numbers in Inter Tight, tight and bold like "Your tech plug." */
+h1,h2,h3,.top h1,.kpi .v,.dh h2,.dh h3,.stat .v,.sum .v,.card h3,.card h2{font-family:var(--f-d)!important;letter-spacing:-.045em}
+.top h1{font-size:44px;font-weight:700;letter-spacing:-.055em;color:#1d1d1f}
+.kpi .v{font-weight:700;letter-spacing:-.05em}
+/* frosted glass everywhere */
+.card,.side,.drawer,.bnav,.msheet .sheet,.toast,.search,.seg,.filters{-webkit-backdrop-filter:blur(26px) saturate(190%);backdrop-filter:blur(26px) saturate(190%)}
+.side{background:var(--glass);box-shadow:var(--rim),var(--lift);border-radius:28px}
+.drawer{background:linear-gradient(135deg,rgba(255,255,255,.86),rgba(255,255,255,.7))!important}
+.bnav{background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(255,255,255,.45))!important;border-radius:34px!important;box-shadow:var(--rim),0 20px 40px -18px rgba(31,16,60,.45)!important}
+/* glossy purple glass buttons and active pills (same recipe as the website) */
+.btn.pri,.navpill,.chip.on,.seg .on,.seg button.on{background:var(--gloss)!important;box-shadow:var(--gloss-sh)!important;color:#fff}
+.btn.pri:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.btn.pri:active{transform:translateY(1px);box-shadow:var(--gloss-sh)!important}
+.btn.gh{background:var(--glass)!important;-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);box-shadow:var(--rim),0 8px 18px -12px rgba(31,16,60,.3)!important}
+/* sign-in: a clean glass card instead of the folded paper */
+.gwrap{background:linear-gradient(135deg,rgba(255,255,255,.62),rgba(255,255,255,.32))!important;box-shadow:var(--rim),0 50px 90px -40px rgba(60,25,130,.5)!important;border-radius:36px}
+.gcard{border-radius:26px;background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,255,255,.78));box-shadow:inset 0 1px 0 #fff,0 18px 40px -26px rgba(60,25,130,.4)}
+.gcard::before,.gcard::after{display:none}
+.gcard h1{font-size:34px;font-weight:700;letter-spacing:-.05em}
+.gcard h1 em{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--p)}
+.inp,.f input,.f select,.f textarea{border-radius:14px;background:rgba(255,255,255,.85)}
+@media (prefers-reduced-motion:reduce){.silk{animation:none}}
 </style></head><body>
 <div class="silk" aria-hidden="true"></div>
 <div id="root"></div>
