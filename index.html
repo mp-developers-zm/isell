@@ -2133,7 +2133,119 @@ body::before{animation:none!important;filter:none!important;inset:0!important}
 .cp-cta{display:flex;justify-content:center;margin-top:22px}
 .cp-cta .hx-pill svg{width:18px;height:18px}
 @media (prefers-reduced-motion:reduce){.cp-seal i{animation:none}.cp-ok svg{stroke-dashoffset:0}}
-</style></head><body>
+</style>
+<style id="pfx-css">
+/* ===== Profile look (26 Nov 2026): full-bleed photos + liquid-glass panels, from the 2026 company profile ===== */
+.pfx-band{position:relative;overflow:hidden;isolation:isolate;margin-top:clamp(70px,9vw,120px);scroll-margin-top:80px}
+.pfx-band>.pfx-ph{position:absolute;inset:0;z-index:-1}
+.pfx-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.pfx-band .wrap{position:relative;height:100%}
+.pfx-glass{position:relative;border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.66),rgba(255,255,255,.3) 60%,rgba(255,255,255,.44));-webkit-backdrop-filter:blur(20px) saturate(1.35);backdrop-filter:blur(20px) saturate(1.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 0 0 1px rgba(255,255,255,.6),0 34px 60px -34px rgba(16,6,40,.55);color:var(--hxk)}
+.pfx-glass.dk{background:linear-gradient(135deg,rgba(18,14,30,.6),rgba(10,8,18,.42) 60%,rgba(18,14,30,.36));box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 0 0 1px rgba(255,255,255,.2),0 34px 60px -34px rgba(0,0,0,.7);color:#fff}
+.pfx-glass.frz{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background-repeat:no-repeat}
+.pfx-strip>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.pfx-glass{background:rgba(255,255,255,.9)}.pfx-glass.dk{background:rgba(14,10,24,.86)}}
+.pfx-kick{font:600 12px/1 var(--f-ui,Inter);letter-spacing:.24em;text-transform:uppercase;color:#6A36C7}
+.pfx-glass.dk .pfx-kick,.pfx-dark .pfx-kick{color:rgba(255,255,255,.8)}
+.pfx-h{font:800 clamp(40px,5.4vw,72px)/.96 var(--f-d);letter-spacing:-.045em;margin:14px 0 0;color:inherit}
+.pfx-h em,.sl-h em{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:#6A36C7;padding-right:.04em}
+.pfx-glass.dk .pfx-h em,.pfx-dark .pfx-h em{color:#fff}
+.pfx-p{font-size:clamp(15px,1.25vw,17px);line-height:1.65;color:var(--ink2);margin:0}
+.pfx-lead{font:500 clamp(18px,1.6vw,21px)/1.5 var(--f-ui,Inter);color:var(--hxk);margin:0 0 16px}
+/* about */
+.pfx-about{height:clamp(420px,46vw,620px);border-radius:0}
+.pfx-about .pfx-glass{position:absolute;left:calc((100% - min(100%, var(--wrap))) / 2 + var(--gut));bottom:clamp(24px,4vw,56px);width:min(560px,calc(100% - 2 * var(--gut)));padding:clamp(24px,3vw,40px)}
+.pfx-about-b{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,56px);padding-top:clamp(36px,4vw,56px)}
+.pfx-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pfx-card{border-radius:22px;background:linear-gradient(180deg,#fff,rgba(255,255,255,.9));box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(20,20,30,.06),0 22px 40px -28px rgba(20,20,30,.35)}
+.pfx-fact{padding:20px 18px}
+.pfx-fact b{display:block;font:800 clamp(30px,3vw,40px)/1 var(--f-d);letter-spacing:-.03em;color:#6A36C7}
+.pfx-fact span{display:block;margin-top:8px;font-size:13px;line-height:1.4;color:var(--ink2)}
+.pfx-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.pfx-chip{display:inline-flex;align-items:center;height:34px;padding:0 16px;border-radius:999px;font:600 13px var(--f-ui,Inter);color:#3B1E72;background:#fff;box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(20,20,30,.1),0 10px 18px -12px rgba(20,20,30,.3)}
+.pfx-note{display:flex;align-items:center;gap:16px;padding:18px 22px;margin-top:22px}
+.pfx-ic{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:14px;color:#fff;background:linear-gradient(180deg,#8A5BE6,#5B2E9E);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 10px 18px -10px rgba(91,46,158,.8)}
+.pfx-ic svg{width:21px;height:21px}
+/* vision + ethics */
+.pfx-vision{padding:clamp(40px,6vw,90px) 0}
+.pfx-vision .pfx-ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.18) 60%,rgba(244,244,246,.5))}
+.pfx-quote{padding:clamp(28px,4vw,52px);max-width:920px}
+.pfx-quote p{margin:20px 0 0;font:400 clamp(28px,3.6vw,50px)/1.12 var(--f-serif);font-style:italic;letter-spacing:-.01em;color:var(--hxk);max-width:26ch}
+.pfx-eth{display:flex;align-items:center;gap:28px;padding:22px 30px;margin-top:18px}
+.pfx-eth .pfx-h{font-size:clamp(30px,3.2vw,44px);margin:0;white-space:nowrap}
+.pfx-vals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.pfx-val{display:flex;gap:14px;padding:22px 24px;border-radius:24px}
+.pfx-val i{font:800 13px var(--f-d);font-style:normal;color:#6A36C7;min-width:22px;padding-top:3px}
+.pfx-val b{display:block;font:700 17px var(--f-d);letter-spacing:-.01em}
+.pfx-val span{display:block;margin-top:5px;font-size:13.5px;line-height:1.45;color:var(--ink2)}
+/* products */
+.pfx-prod-ph{position:relative;margin-top:clamp(24px,3vw,36px);height:clamp(300px,38vw,520px);border-radius:32px;overflow:hidden;box-shadow:0 34px 60px -34px rgba(16,6,40,.6)}
+.pfx-prod-ph .pfx-glass{position:absolute;left:clamp(14px,2vw,28px);bottom:clamp(14px,2vw,28px);right:clamp(14px,2vw,28px);max-width:520px;padding:20px 24px;border-radius:22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.pfx-prod-ph .pfx-glass small{display:block;font:600 11px Inter;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.pfx-prod-ph .pfx-glass b{display:block;margin-top:6px;font:700 clamp(17px,1.6vw,21px)/1.25 var(--f-d);letter-spacing:-.01em}
+.pfx-btn{flex:none;display:inline-flex;align-items:center;height:46px;padding:0 22px;border-radius:999px;background:#fff;color:#2A1356;font:600 15px var(--f-ui,Inter);white-space:nowrap;transition:transform .3s var(--spring)}
+.pfx-btn:hover{transform:translateY(-2px)}
+.pfx-btn.pu{background:#5B2E9E;color:#fff}
+.pfx-port{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.pfx-port a{display:flex;align-items:center;gap:12px;padding:14px;font:600 14px var(--f-ui,Inter);color:var(--hxk);transition:transform .3s var(--spring)}
+.pfx-port a:hover{transform:translateY(-2px)}
+.pfx-port .pfx-ic{width:38px;height:38px;border-radius:12px}
+.pfx-port .pfx-ic svg{width:19px;height:19px}
+.pfx-sub{font:600 11.5px Inter;letter-spacing:.24em;text-transform:uppercase;color:#6A36C7;margin:28px 0 12px}
+/* strip photo with dark glass caption (clients, business) */
+.pfx-strip{position:relative;margin-top:clamp(18px,2.4vw,28px);height:clamp(260px,30vw,380px);border-radius:30px;overflow:hidden;box-shadow:0 34px 60px -34px rgba(16,6,40,.6)}
+.pfx-strip .pfx-glass{position:absolute;left:clamp(14px,2vw,24px);right:clamp(14px,2vw,24px);bottom:clamp(14px,2vw,24px);padding:20px 24px;border-radius:22px;display:flex;align-items:center;justify-content:space-between;gap:18px;font:700 clamp(17px,1.7vw,22px)/1.3 var(--f-d);letter-spacing:-.01em}
+.pfx-strip .pfx-glass small{font:600 11px Inter;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.8);white-space:nowrap}
+/* services page */
+.pfx-svhero{margin-top:-100px;padding:clamp(130px,12vw,170px) 0 clamp(56px,6vw,90px);color:#fff}
+.pfx-svhero .pfx-ph:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,8,12,.55),rgba(8,8,12,0) 65%),linear-gradient(180deg,rgba(8,8,12,.6),rgba(8,8,12,.25) 38%,rgba(8,8,12,.8))}
+.pfx-svhero .pfx-p{color:rgba(255,255,255,.86);max-width:46ch;margin-top:18px}
+.pfx-svhero .pfx-h{font-size:clamp(48px,6.6vw,92px)}
+.pfx-svlinks{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.pfx-svlinks .ghost{display:inline-flex;align-items:center;height:46px;padding:0 20px;border-radius:999px;color:#fff;font:500 15px var(--f-ui,Inter);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.pfx-svlist{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);background:linear-gradient(135deg,rgba(14,10,24,.66),rgba(10,8,18,.5));margin-top:clamp(36px,5vw,60px);padding:clamp(18px,2.6vw,30px) clamp(20px,3vw,38px);display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(20px,3vw,48px)}
+.pfx-svlist a{display:flex;align-items:center;gap:16px;padding:16px 0;border-top:1px solid rgba(255,255,255,.18);color:#fff;font:600 clamp(15px,1.4vw,18px) var(--f-d);letter-spacing:-.005em;transition:padding .3s var(--spring)}
+.pfx-svlist a:hover{padding-left:6px}
+.pfx-svlist a i{font:700 13px var(--f-d);font-style:normal;color:rgba(255,255,255,.7);min-width:26px}
+.pfx-svlist a em{margin-left:auto;font-style:normal;opacity:.6}
+.pfx-svlist .pfx-wa{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.18);padding-top:16px;font:500 13px var(--f-ui,Inter);color:rgba(255,255,255,.75)}
+.pfx-biz{height:clamp(600px,54vw,740px);margin-bottom:clamp(36px,4vw,56px)}
+.pfx-biz .pfx-glass{position:absolute;left:calc((100% - min(100%, var(--wrap))) / 2 + var(--gut));bottom:clamp(24px,4vw,56px);width:min(640px,calc(100% - 2 * var(--gut)));padding:clamp(24px,3vw,40px)}
+.pfx-biz .pfx-p{margin-top:16px;color:rgba(255,255,255,.86)}
+.pfx-biz .pfx-svlinks .ghost{box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
+@media (max-width:860px){
+  .pfx-about-b{grid-template-columns:1fr}
+  .pfx-vals{grid-template-columns:1fr}
+  .pfx-eth{flex-direction:column;align-items:flex-start;gap:12px}
+  .pfx-port{grid-template-columns:1fr 1fr}
+  .pfx-svlist{grid-template-columns:1fr}
+  .pfx-strip .pfx-glass,.pfx-prod-ph .pfx-glass{flex-direction:column;align-items:flex-start}
+  .pfx-glass{-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3)}
+}
+@media (max-width:520px){.pfx-port{grid-template-columns:1fr}.pfx-port a{padding:12px}}
+@media (max-width:640px){.pfx-svhero{margin-top:-80px}}
+
+/* account page: profile-style photo band with liquid-glass panels */
+#account.acct{isolation:isolate;overflow:hidden;color:#fff;margin-top:calc(-100px - clamp(8px,2vw,24px));padding-top:calc(clamp(64px,9vw,120px) + 100px)}
+#account.acct::before{content:"";position:absolute;inset:0;z-index:-2;background:#0A0A0E url(img/pf/cover-1920.webp) 50% 45%/cover no-repeat}
+#account.acct::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,8,12,.72),rgba(8,8,12,.2) 75%),linear-gradient(180deg,rgba(8,8,12,.55),rgba(8,8,12,.15) 45%,rgba(8,8,12,.8))}
+#account .sec-head .eyebrow{color:rgba(255,255,255,.8)}
+#account .sec-head h2{color:#fff}
+#account .sec-head h2 em{color:#fff;font-family:var(--f-serif);font-style:italic;font-weight:400}
+#account .sec-head p{color:rgba(255,255,255,.86)}
+#account .box.glass{background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(255,255,255,.86) 60%,rgba(255,255,255,.92));-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 #fff,0 34px 60px -34px rgba(0,0,0,.65);color:var(--ink)}
+#account .box.glass.ac-perks{background:linear-gradient(135deg,rgba(18,14,30,.62),rgba(10,8,18,.44) 60%,rgba(18,14,30,.4));border-color:rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 34px 60px -34px rgba(0,0,0,.7);color:#fff}
+#account .ac-perks .eyebrow{color:rgba(255,255,255,.8)}
+#account .ac-perks .perk b{color:#fff}
+#account .ac-perks .perk span{color:rgba(255,255,255,.76)}
+#account .ac-perks .perk i{background:rgba(255,255,255,.14);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+#account .ac-msg{color:#5B2E9E}
+@media (max-width:960px){#account.acct::before{background-image:url(img/pf/cover-960.webp)}}
+@media (max-width:640px){#account.acct{margin-top:calc(-80px - clamp(8px,2vw,24px));padding-top:calc(clamp(64px,9vw,120px) + 80px)}}
+@media (min-width:1101px){.sp .sp-visit{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:721px) and (max-width:1100px){.sp .sp-visit{grid-template-columns:1fr 1fr}}
+</style>
+</head><body>
 <div id="splash"><div id="splashLogo"></div></div>
 <div class="announce" aria-label="Store news"><div id="annc"></div></div>
 <header class="hdr" id="hdr"><div class="wrap"><div class="bar glass">
@@ -2710,7 +2822,7 @@ function refreshAccount(){ const a = $('#account'); if (a){ const t = document.c
 
 /* ---------- boot render ---------- */
 function renderAll(){
-  $('#annc').innerHTML = [...Array(2)].map(() => [...(LIVE.announce ? [['bolt', esc(LIVE.announce)]] : []), ['store','Two branches: Liberty Mall, Shop 6 and Rotana Mall, Shop 3'], ...(P.some(p => p.tag === 'Flash sale') ? [['bolt','Flash sale: ' + esc(P.filter(p => p.tag === 'Flash sale').slice(0, 3).map(p => p.name).join(', '))]] : []),['call','Order on WhatsApp in one tap'],['star','Earn 1 iSell point for every K100'],['truck','Delivery across Lusaka'],['rotate','Top-ups on boxed gadgets accepted']].map(([a, b]) => `<span>${I[a]}${b}</span>`).join('')).join('');
+  $('#annc').innerHTML = [...Array(2)].map(() => [...(LIVE.announce ? [['bolt', esc(LIVE.announce)]] : []), ['store','Three shops in Lusaka: Rotana Mall, Liberty Mall and Arcades'], ...(P.some(p => p.tag === 'Flash sale') ? [['bolt','Flash sale: ' + esc(P.filter(p => p.tag === 'Flash sale').slice(0, 3).map(p => p.name).join(', '))]] : []),['call','Order on WhatsApp in one tap'],['star','Earn 1 iSell point for every K100'],['truck','Delivery across Lusaka'],['rotate','Top-ups on boxed gadgets accepted']].map(([a, b]) => `<span>${I[a]}${b}</span>`).join('')).join('');
   $('#brand').innerHTML = logo3D('', true);
   $('#tSearch').innerHTML = I.search; $('#tAcct').innerHTML = I.user; $('#tMenu').innerHTML = `${I.menu}<span class="mlbl">Menu</span><i class="mdot"></i>`;
   $('#tCart').innerHTML = `<span class="lbl2">Cart</span><i>${I.bag}<span class="badge num" data-n="${count()}">${count()}</span></i>`;
@@ -3543,7 +3655,7 @@ const ostLabel = o => o.status === 'ready' ? (o.delivery === 'deliver' ? 'On its
 const fld = (id, label, attrs, val = '') => `<div class="field"><label for="${id}">${label}</label><input id="${id}" ${attrs} value="${esc(val)}"><span class="err" id="e${id}"></span></div>`;
 function acctHTML(){
   const m = S.member, a = AC.prof, note = AC.msg ? `<p class="ac-msg" role="alert">${esc(AC.msg)}</p>` : '';
-  const perks = `<div class="box glass rv d1"><span class="eyebrow">Your account gives you</span>${[['star','iSell Rewards points','1 point for every K100, online or in the shop. Spend them at the counter.'],['box','Order history','See every order and its status as iSell updates it.'],['bolt','Faster checkout','Your name, phone and address are filled in for you.'],['heart','Saved items everywhere','Heart a product on your phone, find it on your laptop.']].map(([ic2, t, d]) => `<div class="perk"><i>${I[ic2]}</i><div><b>${t}</b><span>${d}</span></div></div>`).join('')}</div>`;
+  const perks = `<div class="box glass rv d1 ac-perks"><span class="eyebrow">Your account gives you</span>${[['star','iSell Rewards points','1 point for every K100, online or in the shop. Spend them at the counter.'],['box','Order history','See every order and its status as iSell updates it.'],['bolt','Faster checkout','Your name, phone and address are filled in for you.'],['heart','Saved items everywhere','Heart a product on your phone, find it on your laptop.']].map(([ic2, t, d]) => `<div class="perk"><i>${I[ic2]}</i><div><b>${t}</b><span>${d}</span></div></div>`).join('')}</div>`;
   if (AC.recovery) return `<section class="sec acct" id="account"><div class="wrap">${head2('My account', 'Set a new <em>password.</em>', 'Choose a new password for your iSell account.')}
     <div class="acct-grid"><form class="box glass rv ac-form" id="acNewPw" novalidate>${note}${fld('npw1', 'New password', 'type="password" autocomplete="new-password" minlength="8"')}${fld('npw2', 'Type it again', 'type="password" autocomplete="new-password"')}<button class="btn pri full" type="submit">Save new password ${I.fwd}</button></form>${perks}</div></div></section>`;
   if (!AUTH){
@@ -3658,7 +3770,8 @@ const CO = {
   name:'iSell Innovations Ltd',
   branches:[
     { name:'Rotana Mall, Shop No 3', line:'Chachacha Road, Town, Lusaka', map:'https://maps.google.com/?q=Rotana+Mall+Chachacha+Road+Lusaka' },
-    { name:'Liberty Mall, Shop No 6', line:'Corner of Haile Selassie Rd, Nadia’s, Long Acres, Lusaka', map:'https://maps.google.com/?q=Liberty+Mall+Long+Acres+Lusaka' }
+    { name:'Liberty Mall, Shop No 6', line:'Corner of Haile Selassie Rd, Nadia’s, Long Acres, Lusaka', map:'https://maps.google.com/?q=Liberty+Mall+Long+Acres+Lusaka' },
+    { name:'Arcades Shopping Mall', line:'Great East Road, Lusaka', map:'https://maps.google.com/?q=Arcades+Shopping+Mall+Great+East+Road+Lusaka' }
   ],
   phones:[['+260 965 088 880','+260965088880'],['+260 978 088 880','+260978088880'],['+260 976 084 760','+260976084760']],
   email:'isellinnovations@gmail.com'
@@ -3681,6 +3794,32 @@ function pfShow(){
 }
 const slide = (id, lab, body) => `<section class="wrap hx-sec" id="${id}"><div class="sl">${body}</div></section>`;
 const tile = (n, l) => { const m = String(n).match(/^(\d+)(\+?)$/); return `<div class="tile" data-tilt><b class="num"${m ? ` data-count="${m[1]}" data-suf="${m[2]}"` : ''}>${n}</b><span>${l}</span></div>`; };
+const pfImg = (k, pos, eager) => `<img data-k="${k}" src="img/pf/${k}-1920.webp" srcset="img/pf/${k}-960.webp 960w, img/pf/${k}-1920.webp 1920w" sizes="100vw" alt="" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"${pos ? ` style="object-position:${pos}"` : ''}>`;
+// "frozen" liquid glass: each glass panel shows a pre-blurred copy of the band photo, lined up with it.
+// Looks like backdrop-filter but costs nothing while scrolling (live blur made scrolling slow).
+const PFAR = { about:.6656, vision:.6667, services:.75, products:.6667, business:.6667 };
+function pfxGlass(){
+  $$('.pfx-band, .pfx-prod-ph, .pfx-strip').forEach(band => {
+    const img = band.querySelector('img[data-k]'); if (!img || !band.offsetWidth) return;
+    const k = img.dataset.k, ar = PFAR[k]; if (!ar) return;
+    const W2 = band.offsetWidth, H2 = band.offsetHeight, sc = Math.max(W2, H2 / ar), w = sc, h = sc * ar;
+    const op = (img.style.objectPosition || '50% 50%').split(' ').map(v => parseFloat(v) / 100);
+    const ox = (W2 - w) * op[0], oy = (H2 - h) * (op[1] ?? .5);
+    $$('.pfx-glass', band).forEach(g => {
+      let x = 0, y = 0, e = g; while (e && e !== band){ x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; }
+      if (e !== band) return;
+      if (!g.dataset.fill) g.dataset.fill = getComputedStyle(g).backgroundImage;
+      g.style.backgroundImage = `${g.dataset.fill}, url(img/pf/${k}-blur.webp)`;
+      g.style.backgroundSize = `100% 100%, ${w.toFixed(1)}px ${h.toFixed(1)}px`;
+      g.style.backgroundPosition = `0 0, ${(ox - x).toFixed(1)}px ${(oy - y).toFixed(1)}px`;
+      g.classList.add('frz');
+    });
+  });
+}
+{ let t; const go = d => { clearTimeout(t); t = setTimeout(pfxGlass, d); };
+  addEventListener('resize', () => go(150)); addEventListener('hashchange', () => { go(80); setTimeout(pfxGlass, 700); }); addEventListener('load', () => go(50));
+  document.fonts && document.fonts.ready.then(() => go(50)); setTimeout(pfxGlass, 400); setTimeout(pfxGlass, 1500); }
+const PFI2 = { phone:'<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/>', laptop:'<rect x="4" y="4.5" width="16" height="11" rx="1.5"/><path d="M2 19.5h20"/>', desktop:'<rect x="3" y="3.5" width="18" height="12.5" rx="1.5"/><path d="M8.5 20.5h7M12 16v4.5"/>', printer:'<path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/>', projector:'<rect x="2.5" y="8" width="19" height="9" rx="2"/><circle cx="16" cy="12.5" r="2.4"/><path d="M6 12.5h4M5 17v2M19 17v2"/>', chip:'<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2.5v3.5M15 2.5v3.5M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/>', box:'<path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/>', code:'<path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/>', network:'<rect x="9" y="2.5" width="6" height="5" rx="1"/><rect x="2.5" y="16.5" width="6" height="5" rx="1"/><rect x="15.5" y="16.5" width="6" height="5" rx="1"/><path d="M12 7.5v4.5M5.5 16.5V12h13v4.5"/>' };
 const hxLab = t => `<div class="hx-lab rv"><span>${t}</span><i></i><b>${pfPhone}</b></div>`;
 function secProfile(){
   const words = 'Be an industry leader in the electronics supply value chain, quality service delivery, uniting technology innovation with people and businesses globally.'.split(' ');
@@ -3690,14 +3829,14 @@ function secProfile(){
     { k:'it', ico:pfNet, t:'IT services', d:'Networking and configuration, software installations and upgrades, and IT consulting for businesses.', go:'#/it-services', cta:'See IT services' },
     { k:'finance', ico:pfCoin, t:'Pawning, auctions & micro finance', d:'Flexible ways to get value from your gadgets and to own the technology you need.', go:'#/pawning', cta:'See pawning' }
   ];
-    const values = [['Customer first','Every sale and every repair starts with what you need.'],['Innovation','New technology, new ideas, better ways to serve.'],['Effective & efficient delivery','The right product, on time, every time.'],['Transparency','Clear prices, honest advice and open dealings.'],['Team work','One team across both of our shops.'],['Business integrity','High ethics are our company culture.']];
+    const values = [['Customer first','Every sale and every repair starts with what you need.'],['Innovation','New technology, new ideas, better ways to serve.'],['Effective & efficient delivery','The right product, on time, every time.'],['Transparency','Clear prices, honest advice and open dealings.'],['Team work','One team across all three of our shops.'],['Business integrity','High ethics are our company culture.']];
   const brands = ['Samsung','Apple','Lenovo','HP','Microsoft','Dell','Canon','Infinix','Huawei'];
   const clients = [['First Quantum Mining','first-quantum.svg','Mining'],['Fast Mobile Centre','fast-mobile-centre.webp','Retail'],['Reload Logistics','reload-logistics.svg','Logistics'],['Cgrate Zambia (543)','cgrate-543.svg','Payments'],['Ministry of Health','ministry-of-health.webp','Government'],['Archdiocese of Lusaka','archdiocese-lusaka.webp','Faith']];
   const comp = [['PACRA','Registration No.','120170002339','Patents and Companies Registration Agency','<path d="M4 20h16M6 20V10M10 20V10M14 20V10M18 20V10M3 10l9-6 9 6z"/>'],
     ['ZRA','Tax Identification No.','1004130848','Zambia Revenue Authority','<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/>'],
     ['ZPPA','Registration No.','34635','Zambia Public Procurement Authority','<path d="M4 7h16v13H4z"/><path d="M9 7V4h6v3M4 12h16"/><path d="M11 12v2h2v-2"/>'],
     ['ZICTA','Dealership Licence','SET/RDL/3624','Zambia Information and Communications Technology Authority','<path d="M12 20v-6"/><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/>']];
-  const facts = [['Founded','22 March 2017'],['Ownership','Fully Zambian'],['Shops','Rotana Mall & Liberty Mall'],['Registered','PACRA, ZRA, ZPPA'],['Licensed','ZICTA dealer'],['Brands','Samsung, Apple, HP & more']];
+  const facts = [['Founded','22 March 2017'],['Ownership','Fully Zambian'],['Shops','Rotana Mall, Liberty Mall & Arcades'],['Registered','PACRA, ZRA, ZPPA'],['Licensed','ZICTA dealer'],['Brands','Samsung, Apple, HP & more']];
   return `<div class="ap">  <section class="ap-hero" id="pfHero">
     <div class="ap-plate" aria-hidden="true"><video id="apVid" muted playsinline autoplay preload="auto" poster="img/hero-silk.webp" src="img/hero-silk.mp4"></video></div>
     <div class="wrap ap-top">
@@ -3705,26 +3844,41 @@ function secProfile(){
       <h1 class="ap-h1 in-fade" style="--d:300ms;--dur:1.2s;--rise:28px" data-t="Your tech plug."><span class="ap-h1-sh" aria-hidden="true">Your tech plug.</span>Your tech plug.</h1>
       <p class="ap-sub in-blur" style="--d:650ms">Genuine gadgets, expert repairs and IT services. Zambian-owned, in Lusaka since 2017.</p>
       <div class="ap-cta in-fade" style="--d:850ms"><a class="ap-btn" href="#/catalog">Shop the catalog</a><a class="ap-lnk lglass" href="#/services">Explore services ›</a></div>
-      <ul class="ap-proof in-fade" style="--d:1050ms" aria-label="Why iSell">${['Genuine, with warranty', 'Repairs by our own technicians', 'Rotana Mall & Liberty Mall'].map(t => `<li class="lglass">${pfChk}${t}</li>`).join('')}</ul>
+      <ul class="ap-proof in-fade" style="--d:1050ms" aria-label="Why iSell">${['Genuine, with warranty', 'Repairs by our own technicians', '3 shops in Lusaka'].map(t => `<li class="lglass">${pfChk}${t}</li>`).join('')}</ul>
     </div>
     ${heroNew()}
   </section></div><div class="hx">
 
-  ${slide('about', 'Who we are', `<div class="sl-who">
-      <div class="sl-who-l"><h2 class="sl-h rv">Who we are</h2>
-        <div class="sl-card rv d1" data-tilt><small>Our vision</small><p>Be an industry leader in the electronics supply value chain, quality service delivery, uniting technology innovation with people and businesses globally.</p></div>
-        <div class="sl-card rv d2" data-tilt><small>Business ethics</small><p>A deliberate company policy anchored on high ethical conduct: customer first, innovation, transparency, team work and business integrity.</p></div></div>
-      <div class="sl-who-r"><p class="sl-p rv">iSell Innovations is a fully Zambian-owned company, registered on 22 March 2017 with PACRA in compliance with the Companies Act of the laws of Zambia.</p>
-        <div class="sl-obj rv d1" id="whoObj"><i class="bub b1"></i><i class="bub b2"></i><i class="bub b3"></i><div class="who3d">${logo3D()}</div><span class="sl-ring"><b class="num" data-count="100" data-suf="%">100%</b><span>Zambian owned and run, since 2017</span></span></div></div>
-    </div>`)}
+  <section class="pfx-band pfx-about" id="about"><div class="pfx-ph">${pfImg('about', '50% 40%')}</div>
+    <div class="pfx-glass rv"><div class="pfx-kick">01 · Who we are</div><h2 class="pfx-h">About our <em>company.</em></h2></div></section>
+  <section class="wrap pfx-about-b">
+    <div class="rv"><p class="pfx-lead">iSell Innovations is a fully Zambian-owned company, registered on 22nd March 2017 with PACRA, in compliance with the Companies Act of the laws of Zambia.</p>
+      <p class="pfx-p">We are distinguished by the quality of service and product delivery we bring to the market. Our core business is electronic gadgets supply, electronics repairs, pawning, auctioning and micro finance, as part of our portfolio offering.</p>
+      <div class="pfx-chips">${['Gadget supply','Electronics repairs','IT services','Pawning','Auctioning','Micro finance'].map(t => `<span class="pfx-chip">${t}</span>`).join('')}</div></div>
+    <div class="rv d1"><div class="pfx-facts">${[['2017','','Registered with PACRA, 22 March'],['100','%','Zambian owned and run'],['3','','Shops in Lusaka: Rotana Mall, Liberty Mall & Arcades'],['9','+','Leading global brands in stock']].map(([n, suf, l]) => `<div class="pfx-card pfx-fact"><b class="num"${n === '2017' ? '' : ` data-count="${n}" data-suf="${suf}"`}>${n}${suf}</b><span>${l}</span></div>`).join('')}</div>
+      <div class="pfx-card pfx-note"><span class="pfx-ic">${pfChk}</span><p class="pfx-p" style="color:var(--hxk)"><b>Bought here, looked after here.</b> Every product comes with warranty and a product lifespan guarantee, backed by our own technicians.</p></div></div>
+  </section>
+  <section class="pfx-band pfx-vision" id="vision"><div class="pfx-ph">${pfImg('vision')}</div><div class="wrap">
+    <div class="pfx-glass pfx-quote rv"><div class="pfx-kick">02 · Our vision</div><p>“${words.join(' ')}”</p></div>
+    <div class="pfx-glass pfx-eth rv" id="ethics"><h2 class="pfx-h">Business <em>ethics.</em></h2><p class="pfx-p">A deliberate company policy anchored on high ethical conduct, principles and values: the highest business standards, upheld as our company culture.</p></div>
+    <div class="pfx-vals">${values.map(([t, d], i) => `<div class="pfx-glass pfx-val rv d${i % 3}"><i>0${i + 1}</i><div><b>${t}</b><span>${d}</span></div></div>`).join('')}</div>
+  </div></section>
 
-  ${slide('what', 'What we do', `<div class="sl-top"><h2 class="sl-h rv">What we do</h2><p class="sl-p rv d1">Our core business is electronic gadgets supply, electronics repairs, pawning, auctioning and micro finance, delivered with service that sets us apart.</p></div>
+  ${slide('what', 'What we do', `<div class="sl-top"><h2 class="sl-h rv">What we <em>do.</em></h2><p class="sl-p rv d1">Our core business is electronic gadgets supply, electronics repairs, pawning, auctioning and micro finance, delivered with service that sets us apart.</p></div>
     <div class="sl-cats">${what.map((w, i) => `<a class="sl-cat rv d${i % 4}" id="do-${w.k}" href="${w.go}" data-tilt><b>${w.t}</b><p>${w.d}</p>
       <div class="sl-cat-o"><span class="ph"><img ${w.src ? `src="${w.src}" style="object-position:50% 62%"` : hq(w.k)} alt="" loading="lazy" decoding="async"></span></div><em>${w.cta} ${pfArr}</em></a>`).join('')}</div>`)}
 
+  <section class="wrap hx-sec" id="products"><div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap">
+      <div class="rv"><div class="pfx-kick">What we supply</div><h2 class="pfx-h">Our <em>products.</em></h2></div>
+      <p class="pfx-p rv d1" style="max-width:42ch">Top quality electronic products from the world’s leading manufacturing brands, with quality warranty and a product lifespan guarantee.</p></div>
+    <div class="pfx-prod-ph rv"><div class="pfx-ph" style="position:absolute;inset:0">${pfImg('products', '50% 45%')}</div><div class="pfx-glass dk"><div><small>Genuine · With warranty</small><b>The latest phones, laptops and more</b></div><a class="pfx-btn" href="#/catalog">Open the catalog</a></div></div>
+    <div class="pfx-sub rv">Our products portfolio</div>
+    <div class="pfx-port rv">${[['phone','Mobile phones'],['laptop','Laptops & notebooks'],['desktop','Desktop computers'],['printer','Multi-purpose printers'],['projector','Projectors'],['chip','Electronics'],['box','Consumables'],['code','Software (OS)'],['network','Network infrastructure']].map(([k, t]) => `<a class="pfx-card" href="#/catalog"><span class="pfx-ic">${ic(PFI2[k])}</span>${t}</a>`).join('')}</div>
+  </section>
+
   ${slide('numbers', 'iSell in numbers', `<div class="sl-num">
-      <div class="sl-num-l"><h2 class="sl-h rv">iSell in numbers</h2><p class="sl-p rv d1">Top quality electronics from the world’s leading brands, with warranty and a product lifespan guarantee.</p>
-        <div class="sl-tiles rv d1">${tile(P.length, 'Products online now', 'pk')}${tile(CATS.length - 1, 'Product categories')}${tile('9+', 'Leading brands', 'gy')}${tile(8, 'Services')}${tile(2, 'Shops in Lusaka', 'gy')}${tile(2017, 'Founded')}</div></div>
+      <div class="sl-num-l"><h2 class="sl-h rv">iSell in <em>numbers.</em></h2><p class="sl-p rv d1">Top quality electronics from the world’s leading brands, with warranty and a product lifespan guarantee.</p>
+        <div class="sl-tiles rv d1">${tile(P.length, 'Products online now', 'pk')}${tile(CATS.length - 1, 'Product categories')}${tile('9+', 'Leading brands', 'gy')}${tile(8, 'Services')}${tile(3, 'Shops in Lusaka', 'gy')}${tile(2017, 'Founded')}</div></div>
       <div class="pawn rv d2" id="pawn">
         <div class="pawn-txt"><h3>Don’t just buy tech.<br><b>Buy it right.</b></h3><span class="pawn-lab">Genuine · With warranty</span></div>
         <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -3747,10 +3901,11 @@ function secProfile(){
     </div>
     <div class="sl-brands"><div>${[...brands, ...brands].map(b => `<span>${b}</span>`).join('')}</div></div>`)}
 
-  ${slide('clients', 'Our clients', `<div class="sl-top"><h2 class="sl-h rv">Trusted by industry leaders</h2><p class="sl-p rv d1">Since our establishment we have grown steadily across many industries. Our portfolio of clients is not limited to the ones below.</p></div>
-    <div class="sl-tiles six rv cl-grid">${clients.map(([a, logo, sector], i) => `<div class="tile cl" data-tilt style="--d:${i}"><span class="cl-logo">${logo ? `<img src="img/clients/${logo}" alt="${esc(a)} logo" loading="lazy" decoding="async" draggable="false">` : `<i class="cl-mono" aria-hidden="true">FMC</i>`}</span><span class="cl-txt"><b>${a}</b><small>${sector}</small></span></div>`).join('')}</div>`)}
+  ${slide('clients', 'Our clients', `<div class="sl-top"><h2 class="sl-h rv">Our <em>clients.</em></h2><p class="sl-p rv d1">Since our establishment we have grown steadily across many industries. Our portfolio of clients is not limited to the ones below.</p></div>
+    <div class="sl-tiles six rv cl-grid">${clients.map(([a, logo, sector], i) => `<div class="tile cl" data-tilt style="--d:${i}"><span class="cl-logo">${logo ? `<img src="img/clients/${logo}" alt="${esc(a)} logo" loading="lazy" decoding="async" draggable="false">` : `<i class="cl-mono" aria-hidden="true">FMC</i>`}</span><span class="cl-txt"><b>${a}</b><small>${sector}</small></span></div>`).join('')}</div>
+    <div class="pfx-strip rv">${pfImg('business', '50% 72%')}<div class="pfx-glass dk"><span>Mining, government, logistics, payments, retail and faith.</span><small>Since 2017</small></div></div>`)}
 
-  ${slide('compliance', 'Compliance', `<div class="sl-top"><h2 class="sl-h rv">Our compliance</h2><p class="sl-p rv d1">A private limited company that meets all compliance requirements. Registration documents are available to any customer on request.</p></div>
+  ${slide('compliance', 'Compliance', `<div class="sl-top"><h2 class="sl-h rv">Our <em>compliance.</em></h2><p class="sl-p rv d1">A private limited company that meets all compliance requirements. Registration documents are available to any customer on request.</p></div>
     <div class="sl-tiles four rv cp-grid">${comp.map(([a, b, n, full, ico], i) => `<div class="tile cp" data-tilt style="--d:${i}">
       <div class="cp-top"><span class="cp-seal" aria-hidden="true"><i></i>${ic(ico)}</span><span class="cp-ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4 8-9"/></svg>Verified</span></div>
       <div class="cp-mid"><b class="cp-auth">${a}</b><small>${full}</small></div>
@@ -3837,12 +3992,12 @@ const SVC = [
 const svWa = t => `${WA}?text=${encodeURIComponent('Hi iSell! I would like to ask about ' + t.replace(/\.$/, '').toLowerCase() + '.')}`;
 function secServicesPage(){
   return `<div class="sp">
-    <section class="sp-hero"><div class="wrap">
-      <span class="sp-eb rv">iSell Services</span>
-      <h1 class="sp-h1 rv d1">Expert care for<br>every device.</h1>
-      <p class="sp-sub rv d2">Repairs, IT and business technology services from iSell Innovations, at Rotana Mall and Liberty Mall in Lusaka.</p>
-      <div class="sp-links rv d2"><a class="sp-btn" href="${WA}?text=${encodeURIComponent('Hi iSell! I would like to book a service.')}" target="_blank" rel="noopener">Book a service</a><a class="sp-lnk" href="tel:+260965088880">Call +260 965 088 880 ›</a></div>
-      <div class="sp-heroimg rv"><img ${hq('repair')} alt="A technician repairing a laptop"></div>
+    <section class="pfx-band pfx-svhero pfx-dark"><div class="pfx-ph">${pfImg('services', '40% 50%', true)}</div><div class="wrap">
+      <div class="pfx-kick in-blur" style="--d:100ms">iSell Services · What we do</div>
+      <h1 class="pfx-h in-fade" style="--d:250ms">Our <em>services.</em></h1>
+      <p class="pfx-p in-blur" style="--d:450ms">Solutions that solve real problems for homes and businesses, delivered with effectiveness, efficiency, integrity and care, at our three shops in Lusaka.</p>
+      <div class="pfx-svlinks in-fade" style="--d:600ms"><a class="pfx-btn" href="${WA}?text=${encodeURIComponent('Hi iSell! I would like to book a service.')}" target="_blank" rel="noopener">Book a service</a><a class="ghost" href="tel:+260965088880">Call +260 965 088 880</a></div>
+      <div class="pfx-glass dk pfx-svlist in-fade" style="--d:750ms">${SVC.map((v, i) => `<a href="#/services" data-sv="${v.id}"><i>${String(i + 1).padStart(2, '0')}</i>${v.t.replace(/\.$/, '')}<em>›</em></a>`).join('')}<div class="pfx-wa">Book any service on WhatsApp: +260 978 088 880</div></div>
     </div></section>
 
     <nav class="sp-nav" aria-label="Services"><div class="wrap"><div class="sp-nav-in">${SVC.map(s => `<a href="#/services" data-sv="${s.id}">${s.t.replace(/\.$/, '').replace(' & ', ' & ')}</a>`).join('')}</div></div></nav>
@@ -3852,11 +4007,10 @@ function secServicesPage(){
       ${s.k ? `<div class="sp-t-img"><img ${hq(s.k)} alt="" loading="lazy"></div>` : `<div class="sp-t-ico">${s.ico}</div>`}
     </article>`).join('')}</section>
 
-    <section class="wrap sp-biz rv">
-      <span class="sp-eb">For business</span>
-      <h2 class="sp-h2">The IT partner behind<br>Zambian organisations.</h2>
-      <p class="sp-sub">We supply and support organisations across mining, health, logistics, finance and faith, including First Quantum Mining, the Ministry of Health and the Archdiocese of Lusaka. Registered with ZPPA for public procurement.</p>
-      <div class="sp-links"><a class="sp-btn" href="mailto:${CO.email}">Email ${CO.email}</a><a class="sp-lnk" href="#/clients">Our clients ›</a></div>
+    <section class="pfx-band pfx-biz pfx-dark"><div class="pfx-ph">${pfImg('business')}</div>
+      <div class="pfx-glass dk rv"><div class="pfx-kick">For business</div><h2 class="pfx-h">The IT partner behind <em>Zambian organisations.</em></h2>
+        <p class="pfx-p">We supply and support organisations across mining, health, logistics, finance and faith, including First Quantum Mining, the Ministry of Health and the Archdiocese of Lusaka. Registered with ZPPA for public procurement.</p>
+        <div class="pfx-svlinks"><a class="pfx-btn" href="mailto:${CO.email}">Email ${CO.email}</a><a class="ghost" href="#/clients">Our clients ›</a></div></div>
     </section>
 
     <section class="wrap sp-visit rv">
@@ -3867,6 +4021,7 @@ function secServicesPage(){
 }
 function mountServicesPage(){
   const links = $$('.sp-nav a'); if (!links.length) return;
+  $$('.pfx-svlist a').forEach(a => a.addEventListener('click', e => { e.preventDefault(); const el = document.getElementById(a.dataset.sv); el && scrollTo({ top:el.getBoundingClientRect().top + scrollY - 150, behavior:reduce ? 'instant' : 'smooth' }); }));
   links.forEach(a => a.addEventListener('click', e => { e.preventDefault(); const el = document.getElementById(a.dataset.sv); el && scrollTo({ top:el.getBoundingClientRect().top + scrollY - 150, behavior:reduce ? 'instant' : 'smooth' }); }));
   let t; addEventListener('scroll', () => { clearTimeout(t); t = setTimeout(() => { if (W.page !== 'services') return; let on = null; links.forEach(a => { const el = document.getElementById(a.dataset.sv); if (el && el.getBoundingClientRect().top < innerHeight * .5) on = a; }); links.forEach(a => a.classList.toggle('on', a === on)); }, 60); }, { passive:true });
 }
