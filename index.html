@@ -1994,6 +1994,30 @@ body:has(.cg-tray.on) .dotx{bottom:96px}
 .ap-h1::after{background-image:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.95) 48%,rgba(255,255,255,0) 58%);background-repeat:no-repeat;background-size:250% 100%;background-position:150% 0;animation:h1Shine 6s ease-in-out 1.2s infinite}
 @keyframes h1Shine{0%{background-position:150% 0}45%,100%{background-position:-60% 0}}
 @media (prefers-reduced-motion:reduce){.ap-h1::after,.cl-logo{animation:none}}
+
+/* ===== hero, built with the MotionSites skill: cinematic silk video + liquid glass + blur-rise ===== */
+:root{--ease-out-expo:cubic-bezier(.16,1,.3,1)}
+@keyframes blurRise{from{opacity:0;transform:translateY(var(--rise,24px));filter:blur(var(--blur,10px))}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes fadeRise{from{opacity:0;transform:translateY(var(--rise,20px))}to{opacity:1;transform:none}}
+@keyframes settleZoom{from{transform:scale(1.06)}to{transform:scale(1)}}
+.in-blur{animation:blurRise var(--dur,1.05s) var(--ease-out-expo) var(--d,0ms) both}
+.in-fade{animation:fadeRise var(--dur,1s) var(--ease-out-expo) var(--d,0ms) both}
+.ap-hero{position:relative;isolation:isolate}
+.ap-plate{position:absolute;z-index:-1;left:0;right:0;top:calc(-1 * (var(--hh) + 40px));height:calc(100% - 120px);overflow:hidden;pointer-events:none;
+  -webkit-mask:linear-gradient(to bottom,#000 0%,#000 52%,rgba(0,0,0,.77) 60%,rgba(0,0,0,.5) 68%,rgba(0,0,0,.25) 76%,rgba(0,0,0,.1) 84%,transparent 94%);mask:linear-gradient(to bottom,#000 0%,#000 52%,rgba(0,0,0,.77) 60%,rgba(0,0,0,.5) 68%,rgba(0,0,0,.25) 76%,rgba(0,0,0,.1) 84%,transparent 94%)}
+.ap-plate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;opacity:0;filter:hue-rotate(22deg) saturate(1.08);animation:settleZoom 1.8s var(--ease-out-expo) both}
+.ap-plate::before{content:"";position:absolute;inset:0;background:url(img/hero-silk.webp) 50% 40%/cover;filter:hue-rotate(22deg) saturate(1.08)}
+.ap-top{position:relative}
+/* liquid-glass surface (gradient hairline rim), light tier for a light page */
+.lglass{position:relative;background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(255,255,255,.22));-webkit-backdrop-filter:blur(10px) saturate(160%);backdrop-filter:blur(10px) saturate(160%);box-shadow:inset 0 1px 1px rgba(255,255,255,.7),0 10px 24px -14px rgba(40,15,90,.35)}
+.lglass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.4px;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.35) 20%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,.35) 80%,rgba(255,255,255,.9) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.ap-lnk.lglass{display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:999px;color:var(--hxp);font-weight:500;transition:transform .35s var(--spring)}
+.ap-lnk.lglass:hover{transform:scale(1.03)}
+.ap-proof{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:26px auto 0;padding:0;list-style:none}
+.ap-proof li{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px 0 12px;border-radius:999px;font:500 13.5px var(--f-ui);color:var(--hxk,#211336)}
+.ap-proof li svg{width:16px;height:16px;color:var(--hxp)}
+@media (max-width:720px){.ap-plate{height:calc(100% - 200px)}.ap-cta{gap:10px;flex-wrap:nowrap}.ap-cta .ap-btn,.ap-cta .ap-lnk.lglass{height:46px;padding:0 16px;font-size:15px;white-space:nowrap}.ap-proof{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin:18px calc(-1 * var(--gut)) 0;padding:4px var(--gut);-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}.ap-proof::-webkit-scrollbar{display:none}.ap-proof li{flex:none;height:34px;font-size:12.5px}}
+@media (prefers-reduced-motion:reduce){.in-blur,.in-fade,.ap-plate video{animation:none}}
 </style></head><body>
 <div id="splash"><div id="splashLogo"></div></div>
 <div class="announce" aria-label="Store news"><div id="annc"></div></div>
@@ -3584,11 +3608,13 @@ function secProfile(){
   const comp = [['PACRA','Registration No.','120170002339'],['ZRA','Tax Identification No.','1004130848'],['ZPPA','Registration No.','34635'],['ZICTA','Dealership Licence','SET/RDL/3624']];
   const facts = [['Founded','22 March 2017'],['Ownership','Fully Zambian'],['Shops','Rotana Mall & Liberty Mall'],['Registered','PACRA, ZRA, ZPPA'],['Licensed','ZICTA dealer'],['Brands','Samsung, Apple, HP & more']];
   return `<div class="ap">  <section class="ap-hero" id="pfHero">
-    <div class="wrap">
-      <p class="ap-kick rv">iSell Innovations</p>
-      <h1 class="ap-h1 rv d1" data-t="Your tech plug.">Your tech plug.</h1>
-      <p class="ap-sub rv d2">Genuine gadgets, expert repairs and IT services. Zambian-owned, in Lusaka since 2017.</p>
-      <div class="ap-cta rv d2"><a class="ap-btn" href="#/catalog">Shop the catalog</a><a class="ap-lnk" href="#/services">Explore services ›</a></div>
+    <div class="ap-plate" aria-hidden="true"><video id="apVid" muted playsinline autoplay preload="auto" poster="img/hero-silk.webp" src="img/hero-silk.mp4"></video></div>
+    <div class="wrap ap-top">
+      <p class="ap-kick in-blur" style="--d:150ms">iSell Innovations</p>
+      <h1 class="ap-h1 in-fade" style="--d:300ms;--dur:1.2s;--rise:28px" data-t="Your tech plug.">Your tech plug.</h1>
+      <p class="ap-sub in-blur" style="--d:650ms">Genuine gadgets, expert repairs and IT services. Zambian-owned, in Lusaka since 2017.</p>
+      <div class="ap-cta in-fade" style="--d:850ms"><a class="ap-btn" href="#/catalog">Shop the catalog</a><a class="ap-lnk lglass" href="#/services">Explore services ›</a></div>
+      <ul class="ap-proof in-fade" style="--d:1050ms" aria-label="Why iSell">${['Genuine, with warranty', 'Repairs by our own technicians', 'Rotana Mall & Liberty Mall'].map(t => `<li class="lglass">${pfChk}${t}</li>`).join('')}</ul>
     </div>
     ${heroNew()}
   </section></div><div class="hx">
@@ -3655,8 +3681,23 @@ function secContact(){
   </section>
   </div>`;
 }
+function mountHeroVideo(){
+  const v = $('#apVid'); if (!v) return;
+  if (reduce){ v.removeAttribute('autoplay'); v.pause(); v.style.opacity = '1'; return; }
+  let raf = 0, out = false;
+  const fadeTo = (to, ms = 600) => { cancelAnimationFrame(raf); const from = parseFloat(v.style.opacity) || 0, t0 = performance.now();
+    const tick = now => { const p = Math.min((now - t0) / ms, 1); v.style.opacity = String(from + (to - from) * p); if (p < 1) raf = requestAnimationFrame(tick); }; raf = requestAnimationFrame(tick); };
+  const start = () => { out = false; v.play().catch(() => {}); fadeTo(1, 900); };
+  v.loop = false; v.style.opacity = '0';
+  v.addEventListener('loadeddata', start);
+  v.addEventListener('timeupdate', () => { const left = v.duration - v.currentTime; if (!out && left > 0 && left <= .7){ out = true; fadeTo(0, 650); } });
+  v.addEventListener('ended', () => { v.currentTime = 0; start(); });
+  if (v.readyState >= 2) start();
+  new IntersectionObserver(es => { es[0].isIntersecting && W.page === 'home' ? v.play().catch(() => {}) : v.pause(); }).observe(v);
+}
 function mountProfile(){
   if (!$('.ap')) return;
+  mountHeroVideo();
   const stage = $('#apStage');
   if (stage){
   const line = $('#apLine'), hero = $('#pfHero');
