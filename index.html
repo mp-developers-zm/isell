@@ -2018,6 +2018,13 @@ body:has(.cg-tray.on) .dotx{bottom:96px}
 .ap-proof li svg{width:16px;height:16px;color:var(--hxp)}
 @media (max-width:720px){.ap-plate{height:calc(100% - 200px)}.ap-cta{gap:10px;flex-wrap:nowrap}.ap-cta .ap-btn,.ap-cta .ap-lnk.lglass{height:46px;padding:0 16px;font-size:15px;white-space:nowrap}.ap-proof{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin:18px calc(-1 * var(--gut)) 0;padding:4px var(--gut);-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}.ap-proof::-webkit-scrollbar{display:none}.ap-proof li{flex:none;height:34px;font-size:12.5px}}
 @media (prefers-reduced-motion:reduce){.in-blur,.in-fade,.ap-plate video{animation:none}}
+
+/* checkout goes straight to WhatsApp */
+.wa-go{background:#1FA855!important;box-shadow:0 10px 22px -10px rgba(31,168,85,.7)!important}
+.wa-go:hover{background:#178F47!important}
+.wa-go svg{width:18px;height:18px}
+.wa-big{display:grid;place-items:center;width:84px;height:84px;margin:6px auto 14px;border-radius:50%;color:#fff;background:#1FA855;box-shadow:0 18px 34px -14px rgba(31,168,85,.8)}
+.wa-big svg{width:40px;height:40px}
 </style></head><body>
 <div id="splash"><div id="splashLogo"></div></div>
 <div class="announce" aria-label="Store news"><div id="annc"></div></div>
@@ -2501,7 +2508,7 @@ function footer(){
   return `<div class="wrap"><div class="foot-grid">
     <div><a href="#/home" aria-label="Back to top">${logo3D('', true)}</a><p>iSell Innovations Ltd · Your Tech Plug. Phones, computers, repairs and IT services. Liberty Mall, Shop 6 (Nadia’s), Long Acres, and Rotana Mall, Shop 3, Chachacha Rd, Lusaka.</p></div>
     <div><h4>Shop</h4><ul>${['phones','computers','gaming','audio','accessories'].filter(k => P.some(p => p.cat === k)).map(k => `<li><button data-act="cat" data-k="${k}">${CATN[k]}</button></li>`).join('')}</ul></div>
-    <div><h4 class="h4-logo">${logo3D()}</h4><ul><li><a href="#/rewards">iSell Rewards</a></li><li><a href="#/deals">Flash sales and deals</a></li><li><a href="#/pay">Ways to pay</a></li><li><a href="#/visit">Visit the shop</a></li></ul></div>
+    <div><h4 class="h4-logo">${logo3D()}</h4><ul><li><a href="#/rewards">iSell Rewards</a></li><li><a href="#/deals">Flash sales and deals</a></li><li><a href="#/visit">Visit the shop</a></li></ul></div>
     <div><h4>Contact</h4><ul><li><a href="tel:${TEL}">+260 978 088 880</a></li><li><a href="tel:${TEL2}">+260 965 088 880</a></li><li><a href="tel:+260976084760">+260 976 084 760</a></li><li><a href="mailto:isellinnovations@gmail.com">isellinnovations@gmail.com</a></li><li><a href="${WA}" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://maps.google.com/?q=Liberty+Mall+Long+Acres+Lusaka" target="_blank" rel="noopener">Directions</a></li></ul></div>
   </div>
   <div class="foot-bot"><span>© ${new Date().getFullYear()} iSell · Liberty Mall and Rotana Mall, Lusaka</span><span><a href="#/terms">Terms of Sale</a> · <a href="#/privacy">Privacy and cookies</a> · <button class="foot-lnk" data-act="consent-open">Analytics settings</button> · Website by M&amp;P Developers</span></div></div>`;
@@ -2516,7 +2523,7 @@ function secTerms(){
   ${lsec('Who we are', `<p>iSell sells phones, computers, gaming and audio products from two shops in Lusaka: Liberty Mall, Shop 6 (Nadia’s), corner of U.N. Ave &amp; Haile Selassie Ave, Long Acres; and Rotana Mall, Shop 3, Chachacha Rd. Call, text or WhatsApp +260 978 088 880 or +260 965 088 880.</p>`)}
   ${lsec('Prices and stock', `<p>Prices are in Zambian kwacha. Stock is confirmed when we contact you about your order. If a price on the website is wrong or an item has sold out, we will tell you before you pay and you can cancel. Flash sales last while stocks last.</p>`)}
   ${lsec('Condition', `<p>Every product is labelled with its condition, such as Brand new, Good as new or Neat. You are welcome to inspect any item in the shop before you buy.</p>`)}
-  ${lsec('Orders and payment', `<p>Placing an order on the website is a request to buy. It becomes a sale when iSell confirms it with you by phone or WhatsApp. You can pay with Airtel Money, MTN MoMo, Zamtel Kwacha, a card, or in the shop. iSell will never ask for your mobile money PIN or card PIN.</p>`)}
+  ${lsec('Orders and payment', `<p>Placing an order on the website is a request to buy. You send your order to iSell on WhatsApp, and it becomes a sale when iSell confirms it with you there. Nothing is paid on the website: iSell agrees the price and payment with you directly. iSell will never ask for your mobile money PIN or card PIN.</p>`)}
   ${lsec('Pickup and delivery', `<p>Pickup from either shop is free. Delivery within Lusaka costs K150 and we will agree a time with you.</p>`)}
   ${lsec('Top-ups on boxed gadgets', `<p>On selected products you can trade in a boxed gadget and pay the difference. The trade-in value is agreed after we inspect the gadget in the shop.</p>`)}
   ${lsec('Warranty and returns', `<p>Warranty and returns follow the terms on your receipt and any manufacturer’s warranty that applies. Please ask the team before you buy. Nothing in these terms takes away your rights under Zambian consumer protection law.</p>`)}
@@ -2530,7 +2537,7 @@ function secPrivacy(){
   <div class="lg-body rv">
   ${lsec('What we collect', `<p>When you order or create an account we ask for your name and phone number, and your address if you choose delivery. An account also needs your email address and a password (iSell never sees your password). We keep what you ordered and the items you save. If you message us on WhatsApp, WhatsApp handles that conversation under its own privacy policy.</p>`)}
   ${lsec('Why we use it', `<p>To confirm and prepare your order, arrange pickup or delivery, run your Rewards points, and answer your questions. We do not sell your details or share them for advertising.</p>`)}
-  ${lsec('Where it is kept', `<p>When you place an order, your name, phone number, address (for delivery), the items you chose and your payment choice are sent to iSell’s order system, which runs on Supabase (a database service, servers in Europe). Only iSell can see these orders. If you also send your order on WhatsApp, WhatsApp carries that message.</p><p>If you create an account, your name, phone number, email, address, saved items and whether you want offers are kept with your account in the same system, so you can sign in on any device. Your Rewards points are kept against your phone number. To close your account or have your details removed, contact us.</p><p>Your cart and your sign-in on this device are stored in your own browser. You can delete them at any time with the button below.</p>`)}
+  ${lsec('Where it is kept', `<p>When you order, the website writes your order (your name, the items you chose and, for delivery, your address) into a WhatsApp message that you send to iSell yourself. WhatsApp carries that message; the website does not send or store your order anywhere else.</p><p>If you create an account, your name, phone number, email, address, saved items and whether you want offers are kept with your account in the same system, so you can sign in on any device. Your Rewards points are kept against your phone number. To close your account or have your details removed, contact us.</p><p>Your cart and your sign-in on this device are stored in your own browser. You can delete them at any time with the button below.</p>`)}
   ${lsec('Cookies and analytics', `<p>Your browser’s storage remembers your cart, saved items and that you are signed in. These are needed for the shop to work.</p>
     <p><b>Analytics, only if you agree.</b> When you first visit, we ask whether we may measure how the website is used. If you choose Accept, we use PostHog (posthog.com, servers in the United States) to count page visits and see which products are viewed, added to the cart and ordered, so we can improve the shop. PostHog sets a cookie and stores an anonymous ID in your browser. We never send your name, phone number or address to PostHog, we do not record your screen, and we use no advertising cookies. If you choose No thanks, nothing is sent. You can change your choice at any time with the Analytics settings button below or in the footer.</p>
     <p>Fonts are loaded from Google Fonts, which means Google receives your device’s IP address. Map and WhatsApp links open Google Maps or WhatsApp only when you tap them.</p>`)}
@@ -2595,7 +2602,7 @@ function refreshAccount(){ const a = $('#account'); if (a){ const t = document.c
 
 /* ---------- boot render ---------- */
 function renderAll(){
-  $('#annc').innerHTML = [...Array(2)].map(() => [...(LIVE.announce ? [['bolt', esc(LIVE.announce)]] : []), ['store','Two branches: Liberty Mall, Shop 6 and Rotana Mall, Shop 3'], ...(P.some(p => p.tag === 'Flash sale') ? [['bolt','Flash sale: ' + esc(P.filter(p => p.tag === 'Flash sale').slice(0, 3).map(p => p.name).join(', '))]] : []),['cash','Pay with Airtel Money, MTN MoMo or Zamtel Kwacha'],['star','Earn 1 iSell point for every K100'],['truck','Delivery across Lusaka'],['rotate','Top-ups on boxed gadgets accepted']].map(([a, b]) => `<span>${I[a]}${b}</span>`).join('')).join('');
+  $('#annc').innerHTML = [...Array(2)].map(() => [...(LIVE.announce ? [['bolt', esc(LIVE.announce)]] : []), ['store','Two branches: Liberty Mall, Shop 6 and Rotana Mall, Shop 3'], ...(P.some(p => p.tag === 'Flash sale') ? [['bolt','Flash sale: ' + esc(P.filter(p => p.tag === 'Flash sale').slice(0, 3).map(p => p.name).join(', '))]] : []),['call','Order on WhatsApp in one tap'],['star','Earn 1 iSell point for every K100'],['truck','Delivery across Lusaka'],['rotate','Top-ups on boxed gadgets accepted']].map(([a, b]) => `<span>${I[a]}${b}</span>`).join('')).join('');
   $('#brand').innerHTML = logo3D('', true);
   $('#tSearch').innerHTML = I.search; $('#tAcct').innerHTML = I.user; $('#tMenu').innerHTML = `${I.menu}<span class="mlbl">Menu</span><i class="mdot"></i>`;
   $('#tCart').innerHTML = `<span class="lbl2">Cart</span><i>${I.bag}<span class="badge num" data-n="${count()}">${count()}</span></i>`;
@@ -2870,7 +2877,7 @@ function productHTML(p){
     <div class="pv-swipe"><span class="pv-hint">Swipe right</span>
       <div class="swipe2" id="swipe"><span class="sw-bg">${I.bag}</span><div class="sw-fill"></div><span class="sw-lab"><span class="chev">${I.fwd}${I.fwd}${I.fwd}</span>Add to Cart</span><button class="sw-knob" id="knob" aria-label="Add ${esc(p.name)} to cart">${lensMark(36)}</button></div></div>
     <details class="pv-more-info"><summary>Details and specs</summary><p class="spec">${esc(p.spec)}</p><p>${esc(p.desc)}</p>
-      <div class="pay-row">${MM.slice(0, 3).map(m => payIc(m[0], 'sm')).join('')}<span class="pay-ic sm card-ic">${I.card}</span><span class="pay-note">Mobile money, card or pay in store</span></div></details>`;
+      <div class="pay-row"><span class="pay-note">Add it to your cart, then send your order on WhatsApp. The iSell team confirms stock and price with you there.</span></div></details>`;
 }
 const priceHTML = pr => { const s = fmt(pr); return `<span class="cur">K</span>${s.slice(1)}`; };
 function mountPStage(p){
@@ -2922,76 +2929,50 @@ function drawCart(){
   }
   if (st === 'checkout'){
     const f = S.form;
-    const pays = [['airtel','Airtel Money','iSell sends you the payment details'],['mtn','MTN MoMo','iSell sends you the payment details'],['zamtel','Zamtel Kwacha','iSell sends you the payment details'],['card','Visa or Mastercard','iSell arranges card payment with you'],['store','Pay at the shop','Cash or card when you collect']];
     d.innerHTML = hdr('Checkout', true) + `<div class="db">
       <div class="box"><h4>How do you want it?</h4><div class="choice">
         <button class="ch ${S.deliv === 'pickup' ? 'on' : ''}" data-act="deliv" data-v="pickup"><span class="ci">${I.store}</span><span class="t"><b>Pick up at a branch</b><span>Liberty Mall, Shop 6 or Rotana Mall, Shop 3 · Free</span></span><span class="rd"></span></button>
         <button class="ch ${S.deliv === 'deliver' ? 'on' : ''}" data-act="deliv" data-v="deliver"><span class="ci">${I.truck}</span><span class="t"><b>Deliver in Lusaka</b><span class="num">${fmt(LIVE.fee)} delivery fee</span></span><span class="rd"></span></button></div></div>
       <div class="box"><h4>Your details</h4>
         <div class="field"><label for="fName">Full name</label><input id="fName" value="${esc(f.name || (S.member && S.member.name) || '')}" autocomplete="name" maxlength="60" placeholder="e.g. Mutale Banda"><span class="err" id="eName"></span></div>
-        <div class="field"><label for="fPhone">Phone number</label><input id="fPhone" type="tel" value="${esc(f.phone || (S.member && S.member.phone) || '')}" inputmode="tel" autocomplete="tel" maxlength="16" placeholder="097 000 0000"><span class="err" id="ePhone"></span></div>
+        
         ${S.deliv === 'deliver' ? `<div class="field"><label for="fAddr">Delivery address</label><input id="fAddr" value="${esc(f.addr || (S.member && S.member.address) || '')}" autocomplete="street-address" maxlength="120" placeholder="House number, street, area"><span class="err" id="eAddr"></span></div>` : ''}</div>
       ${false && S.member ? `<div class="box"><button class="toggle ${S.usePts ? 'on' : ''}" data-act="usepts" ${S.points ? '' : 'disabled'}><span class="sw2"></span><span><b style="display:block;font-size:14.5px">Use my iSell points</b><span style="font-size:12.5px;color:var(--ink2)" class="num">${S.points ? `${S.points.toLocaleString()} points = ${fmt(S.points * POINT_VALUE)} off` : 'No points yet. This order earns ' + t.earn.toLocaleString() + '.'}</span></span></button></div>` : ''}
-      <div class="box"><h4>Payment</h4><div class="choice">${pays.map(p => `<button class="ch ${S.pay === p[0] ? 'on' : ''}" data-act="pay" data-v="${p[0]}">${['airtel','mtn','zamtel'].includes(p[0]) ? payIc(p[0], 'sm') : `<span class="ci">${p[0] === 'card' ? I.card : I.cash}</span>`}<span class="t"><b>${p[1]}</b><span>${p[2]}</span></span><span class="rd"></span></button>`).join('')}</div></div></div>
+      </div>
       <div class="df"><div class="tot"><div><span>Items (${n})</span><b class="num">${fmt(t.sub)}</b></div>${t.disc ? `<div><span>Promo</span><b class="num ok">−${fmt(t.disc)}</b></div>` : ''}${t.ptsOff ? `<div><span>iSell points</span><b class="num ok">−${fmt(t.ptsOff)}</b></div>` : ''}<div><span>${S.deliv === 'deliver' ? 'Delivery' : 'Pickup'}</span><b class="num">${t.del ? fmt(t.del) : 'Free'}</b></div><div class="g"><span>Total</span><span class="num">${fmt(t.total)}</span></div></div>
-      <button class="btn pri full" data-act="place" id="placeBtn">Place order · <span class="num">${fmt(t.total)}</span></button><span class="err" id="eOrder" role="alert"></span><span class="proto">No payment is taken on the website. iSell contacts you to confirm. By placing an order you agree to the <a href="#/terms">Terms of Sale</a>.</span></div>`;
+      <button class="btn pri full wa-go" data-act="place" id="placeBtn">${I.call}Send order on WhatsApp · <span class="num">${fmt(t.total)}</span></button><span class="err" id="eOrder" role="alert"></span><span class="proto">Nothing is paid on the website. WhatsApp opens with your order written out: press send and the iSell team confirms stock, price and how you’d like to pay. See the <a href="#/terms">Terms of Sale</a>.</span></div>`;
     return;
   }
   const o = W.lastOrder;
-  d.innerHTML = hdr('Order placed') + `<div class="db"><div class="done">
-    <svg width="150" height="150" viewBox="0 0 180 180" aria-hidden="true"><g fill="none" stroke="#7B4FD6" stroke-width="2.5" stroke-linecap="round" opacity=".5">${[0,45,90,135,180,225,270,315].map((a, i) => `<g transform="rotate(${a} 90 90)"><path d="M90 30V14l8-8" pathLength="1" style="stroke-dasharray:1;stroke-dashoffset:1;animation:dash .8s ${.3 + i * .06}s forwards"/><circle cx="101" cy="4" r="3"/></g>`).join('')}</g><circle cx="90" cy="90" r="52" fill="#fff" stroke="#5B2E9E" stroke-width="10"/><circle cx="90" cy="90" r="36" fill="#5B2E9E"/><path d="m72 91 12 12 24-26" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" pathLength="1" style="stroke-dasharray:1;stroke-dashoffset:1;animation:dash .6s .7s forwards"/></svg>
-    <h3>Thank you${o.name ? ', ' + esc(o.name.split(' ')[0]) : ''}!</h3>
-    <p>${o.offline ? 'We couldn’t reach iSell’s system just now, so please send your order on WhatsApp below.' : `iSell has your order and will call or WhatsApp you on ${esc(o.phone)} to confirm it${o.pay === 'store' ? '. You pay when you collect' : o.pay === 'card' ? ' and arrange card payment' : ' and send the ' + (PAYN[o.pay] || 'payment') + ' details'}.`} ${o.deliv === 'deliver' ? 'Delivery is arranged when you confirm.' : 'They’ll tell you which branch to collect from.'}</p>
+  d.innerHTML = hdr('Order ready') + `<div class="db"><div class="done">
+    <span class="wa-big" aria-hidden="true">${I.call}</span>
+    <h3>Almost done${o.name ? ', ' + esc(o.name.split(' ')[0]) : ''}!</h3>
+    <p>WhatsApp has opened with your order written out. Just press <b>send</b>, and the iSell team will reply to confirm stock, price${o.deliv === 'deliver' ? ', delivery' : ' and pickup'} and how you’d like to pay.</p>
     <span class="ordno num">${o.no} · ${fmt(o.total)}</span>
-    ${S.member ? `<div class="earn" style="width:100%"><i>${I.star}</i><span>You’ll get <b class="num">${o.earned.toLocaleString()} points</b> once iSell confirms your payment. Follow this order in <button data-act="account" style="color:var(--p);font-weight:600">My account</button>.</span></div>` : `<div class="earn" style="width:100%"><i>${I.star}</i><span>This order could have earned <b class="num">${o.earned.toLocaleString()} points</b>. <button data-act="join" style="color:var(--p);font-weight:600">Create an account</button> to collect points next time.</span></div>`}
-  </div></div><div class="df"><a class="btn pri full" href="${WA}?text=${encodeURIComponent(orderText(o))}" target="_blank" rel="noopener">${I.call}${o.offline ? 'Send my order on WhatsApp' : 'Also send it on WhatsApp'}</a><button class="btn gh full" data-act="closeall">Keep shopping</button></div>`;
+  </div></div><div class="df"><a class="btn pri full" href="${esc(waLink(orderText(o)))}" target="_blank" rel="noopener">${I.call}WhatsApp didn’t open? Tap here</a><button class="btn gh full" data-act="closeall">Keep shopping</button></div>`;
 }
 function markInvalid(scope){ $$(scope + ' .field .err').forEach(e => e.previousElementSibling.setAttribute('aria-invalid', e.textContent ? 'true' : 'false')); }
 function captureForm(){ const n = $('#fName'), ph = $('#fPhone'), ad = $('#fAddr'); if (n) S.form.name = n.value.trim(); if (ph) S.form.phone = ph.value.trim(); if (ad) S.form.addr = ad.value.trim(); }
 function redrawCheckout(change){ captureForm(); change(); const y = $('#drawer .db').scrollTop; drawCart(); $('#drawer .db').scrollTop = y; }
-/* orders go to iSell's Supabase database; prices are worked out again there, never trusted from the browser */
+/* orders are sent by the customer on WhatsApp: nothing is paid or stored on the website */
 const SB_URL = 'https://asctcxkbhfigfdggksgi.supabase.co', SB_KEY = 'sb_publishable_JTrh7-6VogQwvCbNBntjeA_0HixxcgV';
-async function sendOrder(){
-  const body = { p_items:S.cart.map(x => ({ id:x.id, option:x.oi, colour:x.ci, qty:x.qty })), p_name:S.form.name, p_phone:S.form.phone,
-    p_delivery:S.deliv, p_address:S.deliv === 'deliver' ? S.form.addr : null, p_payment:S.pay, p_promo:S.promo ? S.promo.code : null, p_use_points:false };
-  const ctl = new AbortController(), tm = setTimeout(() => ctl.abort(), 15000);
-  try {
-    const r = await fetch(SB_URL + '/rest/v1/rpc/place_order', { method:'POST', headers:{ apikey:SB_KEY, 'Content-Type':'application/json', Accept:'application/json', ...(await authHeaders()) }, body:JSON.stringify(body), signal:ctl.signal });
-    const j = await r.json().catch(() => null);
-    if (!r.ok){ const e = new Error((j && j.message) || 'order failed'); e.server = true; throw e; }
-    const row = Array.isArray(j) ? j[0] : j; if (!row || !row.order_no) throw new Error('no order number');
-    return row;
-  } finally { clearTimeout(tm); }
-}
-const PAYN = { airtel:'Airtel Money', mtn:'MTN MoMo', zamtel:'Zamtel Kwacha', card:'Visa or Mastercard', store:'Pay at the shop' };
 function orderText(o){
   const lines = o.items.map(x => { const p = byId(x.id); if (!p) return ''; const op = p.opts[x.oi] && p.opts[x.oi][0], co = p.colors[x.ci] && p.colors[x.ci][0];
-    return `• ${p.name}${op || co ? ` (${[op, co].filter(Boolean).join(', ')})` : ''} × ${x.qty}: ${fmt(priceOf(p, x.ci, x.oi) * x.qty)}`; }).filter(Boolean);
-  return `Hi iSell, I placed order ${o.no} on the website.\n${lines.join('\n')}\nTotal: ${fmt(o.total)}${o.deliv === 'deliver' ? ' (delivery)' : ' (pickup)'}\nPayment: ${PAYN[o.pay] || o.pay}\nName: ${o.name}\nPhone: ${o.phone}`;
+    return `• ${p.name}${op && op !== 'Standard' || co ? ` (${[op !== 'Standard' ? op : '', co].filter(Boolean).join(', ')})` : ''} × ${x.qty}: ${fmt(priceOf(p, x.ci, x.oi) * x.qty)}`; }).filter(Boolean);
+  return `Hi iSell! I’d like to order (ref ${o.no}):\n${lines.join('\n')}\nTotal: ${fmt(o.total)}\n${o.deliv === 'deliver' ? `Delivery to: ${o.addr}` : 'I’ll pick it up at a branch'}\nName: ${o.name}`;
 }
-async function placeOrder(){
-  if (W.placing) return;
+function placeOrder(){
   const ad = $('#fAddr'); let ok = true; captureForm();
   $('#eName').textContent = S.form.name.length < 2 ? 'Please enter your name.' : ''; if (S.form.name.length < 2) ok = false;
-  const pOk = phoneOk(S.form.phone); $('#ePhone').textContent = pOk ? '' : 'Enter a Zambian number, like 097 123 4567.'; if (!pOk) ok = false;
   if (ad){ $('#eAddr').textContent = S.form.addr.length < 5 ? 'Please enter your address.' : ''; if (S.form.addr.length < 5) ok = false; }
   markInvalid('#drawer');
   if (!ok){ const e = $('#drawer .err:not(:empty)'); e && e.previousElementSibling.focus(); return; }
-  S.usePts = false; const t = totals(), btn = $('#placeBtn'), eo = $('#eOrder');
-  W.placing = true; btn.disabled = true; btn.innerHTML = 'Placing your order…'; eo.textContent = '';
-  let row = null, offline = false;
-  try { row = await sendOrder(); }
-  catch (e){
-    if (e.server){ W.placing = false; btn.disabled = false; btn.innerHTML = `Place order · <span class="num">${fmt(t.total)}</span>`;
-      eo.textContent = /not available/.test(e.message) ? 'One of these items is no longer available. Please remove it and try again.' : 'Sorry, that didn’t go through. Please try again, or order on WhatsApp.'; return; }
-    offline = true;   // no connection: keep the order and let the customer send it on WhatsApp
-  }
-  W.placing = false;
-  const no = row ? row.order_no : 'IS-W' + String(Date.now()).slice(-6), total = row ? row.total : t.total;
-  track('order_placed', { order_no:no, value:total, subtotal:t.sub, discount:t.disc, delivery:S.deliv, payment:S.pay, items:count(), products:S.cart.map(x => x.id), saved_online:!offline });
-  if (AUTH && !offline) setTimeout(() => acctLoad(true), 800);
-  S.orders.unshift({ no, date:Date.now(), items:S.cart.map(x => ({ ...x })), total, deliv:S.deliv });
-  W.lastOrder = { no, total, pay:S.pay, earned:t.earn, name:S.form.name, phone:S.form.phone, deliv:S.deliv, items:S.cart.map(x => ({ ...x })), offline };
+  S.usePts = false; const t = totals(), no = 'IS-' + String(Date.now()).slice(-6);
+  const o = { no, total:t.total, earned:t.earn, name:S.form.name, addr:S.deliv === 'deliver' ? S.form.addr : '', deliv:S.deliv, items:S.cart.map(x => ({ ...x })) };
+  window.open(waLink(orderText(o)), '_blank', 'noopener');   // opened right in the tap, so phones don't block it
+  track('order_whatsapp', { order_no:no, value:t.total, subtotal:t.sub, discount:t.disc, delivery:S.deliv, items:count(), products:S.cart.map(x => x.id) });
+  S.orders.unshift({ no, date:Date.now(), items:o.items, total:t.total, deliv:S.deliv });
+  W.lastOrder = o;
   S.cart = []; S.promo = null; persist(); updateBadges(); refreshRewards();
   W.step = 'done'; drawCart();
 }
@@ -3083,7 +3064,6 @@ document.addEventListener('click', e => {
       case 'tocheckout': track('checkout_started', { value:totals().total, items:count() }); W.step = 'checkout'; drawCart(); $('#drawer .db').scrollTop = 0; return;
       case 'cartback': W.step = 'cart'; drawCart(); return;
       case 'deliv': redrawCheckout(() => S.deliv = a.dataset.v); return;
-      case 'pay': redrawCheckout(() => S.pay = a.dataset.v); return;
       case 'usepts': redrawCheckout(() => S.usePts = !S.usePts); return;
       case 'cleardata': STORE.forEach(k => { try { localStorage.removeItem('isellweb2.' + k); } catch (e) {} }); try { localStorage.removeItem('isellweb2.viewed'); } catch (e) {}
         if (phOn && window.posthog){ window.posthog.opt_out_capturing(); window.posthog.reset(); } setConsent(null);
