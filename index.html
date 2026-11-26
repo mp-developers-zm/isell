@@ -2055,6 +2055,40 @@ body::before{animation:none!important;filter:none!important;inset:0!important}
 /* glass headline depth from a cheap text-shadow layer behind the letters (a live filter on 130px text was very slow) */
 .ap-h1,.ap-h1[style]{filter:none!important;isolation:isolate}
 .ap-h1-sh{position:absolute;inset:0;z-index:-1;padding-bottom:inherit;color:transparent;-webkit-text-stroke:0;text-shadow:0 1px 1px rgba(70,30,140,.55),0 6px 10px rgba(91,46,158,.32),0 18px 30px rgba(60,25,130,.24);pointer-events:none;user-select:none}
+
+/* ===== catalog: depth carousel (role slots, colour crossfade, ghost brand word) ===== */
+.dcx{--e:cubic-bezier(.4,0,.2,1);--dc1:#2B1266;--dc2:#7A4BDB;background:radial-gradient(46% 64% at 50% 40%,var(--dc2) -40%,var(--dc1) 55%,#07030F 100%)!important;transition:--dc1 .65s var(--e);touch-action:pan-y;outline:none}
+@property --dc1{syntax:'<color>';inherits:true;initial-value:#2B1266}
+@property --dc2{syntax:'<color>';inherits:true;initial-value:#7A4BDB}
+.dcx{transition:--dc1 .65s var(--e),--dc2 .65s var(--e)}
+.dcx:focus-visible{box-shadow:0 0 0 3px #A27BFF!important}
+.dcx-ghost{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);z-index:0;font:800 clamp(80px,16vw,240px)/1 var(--f-d,var(--f-ui));letter-spacing:-.05em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.16);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,0) 80%);-webkit-background-clip:text;background-clip:text;pointer-events:none;user-select:none}
+.dcx-stage{position:absolute;inset:0 0 110px;z-index:2}
+.dcx-it{position:absolute;left:50%;bottom:6%;width:min(36%,360px);height:78%;padding:0;transform-origin:50% 100%;will-change:transform,opacity,filter;
+  transition:transform .65s var(--e),opacity .65s var(--e),filter .65s var(--e)}
+.dcx-it img{width:100%;height:100%;object-fit:contain;object-position:50% 100%;filter:drop-shadow(0 30px 28px rgba(0,0,0,.55));-webkit-box-reflect:below 2px linear-gradient(transparent 76%,rgba(255,255,255,.14));pointer-events:none;user-select:none}
+.dcx-it[data-role=center]{transform:translateX(-50%) scale(1);opacity:1;filter:none;z-index:20;cursor:pointer}
+.dcx-it[data-role=left]{transform:translateX(calc(-50% - 82%)) scale(.5);opacity:.75;filter:blur(1.5px) brightness(.8);z-index:10;cursor:pointer}
+.dcx-it[data-role=right]{transform:translateX(calc(-50% + 82%)) scale(.5);opacity:.75;filter:blur(1.5px) brightness(.8);z-index:10;cursor:pointer}
+.dcx-it[data-role=back-l]{transform:translateX(calc(-50% - 128%)) scale(.32);opacity:.4;filter:blur(3px) brightness(.6);z-index:5}
+.dcx-it[data-role=back-r]{transform:translateX(calc(-50% + 128%)) scale(.32);opacity:.4;filter:blur(3px) brightness(.6);z-index:5}
+.dcx-it[data-role=hidden]{transform:translateX(-50%) scale(.2);opacity:0;z-index:1;pointer-events:none}
+.dcx-btn{position:absolute;z-index:30;top:44%;width:52px;height:52px;margin-top:-26px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55);transition:transform .15s,background-color .15s}
+.dcx-btn:hover{transform:scale(1.08);background:rgba(255,255,255,.12)}
+.dcx-btn svg{width:22px;height:22px}
+.dcx-btn.prev{left:22px}.dcx-btn.next{right:22px}
+.dcx .cg-ri-info{left:50%!important;transform:translate(-50%,0)}
+.dcx-dots{position:absolute;z-index:3;left:50%;bottom:88px;transform:translateX(-50%);display:flex;gap:6px}
+.dcx-dots i{width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.3);transition:width .5s var(--e),background .5s}
+.dcx-dots i.on{width:22px;background:#fff}
+@media (max-width:639px){
+  .dcx-it{width:62%;height:66%;bottom:12%}
+  .dcx-it[data-role=left]{transform:translateX(calc(-50% - 74%)) scale(.42)}
+  .dcx-it[data-role=right]{transform:translateX(calc(-50% + 74%)) scale(.42)}
+  .dcx-it[data-role=back-l],.dcx-it[data-role=back-r]{opacity:0}
+  .dcx-btn{width:42px;height:42px;margin-top:-21px}.dcx-btn.prev{left:10px}.dcx-btn.next{right:10px}
+}
+@media (prefers-reduced-motion:reduce){.dcx-it,.dcx{transition:none}}
 </style></head><body>
 <div id="splash"><div id="splashLogo"></div></div>
 <div class="announce" aria-label="Store news"><div id="annc"></div></div>
@@ -3839,11 +3873,13 @@ function secCatalog(){
     </div>
 
     <div id="cgBrowse" ${CG.view === 'book' ? 'hidden' : ''}>
-      ${R.length > 2 ? `<div class="cg-stage rv">
-        <div class="cg-ring" id="cgRing" aria-label="Featured products, drag to turn"><div class="cg-ring-in" id="cgRingIn">${R.map(p => `<button class="cg-ri" data-pid="${p.id}" aria-label="${esc(p.name)}"><img ${im(p)} alt="" draggable="false"></button>`).join('')}</div></div>
+      ${R.length > 2 ? `<div class="cg-stage dcx rv" id="cgRing" tabindex="0" aria-roledescription="carousel" aria-label="Featured products">
+        <div class="dcx-ghost" id="dcxGhost" aria-hidden="true"></div>
+        <div class="dcx-stage">${R.map((p, i) => `<button class="dcx-it" data-i="${i}" data-pid="${p.id}" aria-label="${esc(p.name)}"><img ${im(p)} alt="" draggable="false"></button>`).join('')}</div>
         <div class="cg-floor" aria-hidden="true"></div>
+        <button class="dcx-btn prev" data-dir="-1" aria-label="Previous product">${I.back}</button><button class="dcx-btn next" data-dir="1" aria-label="Next product">${I.fwd}</button>
         <div class="cg-ri-info" id="cgRingInfo" aria-live="polite"></div>
-        <span class="cg-hint">Drag to turn</span>
+        <div class="dcx-dots" aria-hidden="true">${R.map(() => '<i></i>').join('')}</div>
       </div>` : ''}
       <div class="cg-bar glass" id="cgBar">
         <label class="cg-q">${I.search}<input id="cgQ" type="search" placeholder="Search the catalog" value="${esc(CG.q)}" maxlength="40" autocomplete="off" aria-label="Search the catalog"></label>
@@ -3941,31 +3977,36 @@ function cgHelpResult(){
     <div class="hm-foot"><button class="lnk" data-cg="hmagain">${I.rotate}Start again</button><a class="lnk" href="${WA}?text=${encodeURIComponent('Hi iSell! Can you help me choose a ' + (CATN[HM.cat] || 'product').toLowerCase() + '?')}" target="_blank" rel="noopener">Ask a person on WhatsApp${I.fwd}</a></div>`, 'hm');
 }
 
-/* the 3D ring of featured products */
+/* featured products: depth carousel with role slots, a colour crossfade and a ghost brand word (MotionSites "depth carousel" technique) */
+const DCX_BG = [['#2B1266','#7A4BDB'],['#0F2A5C','#3F7BE0'],['#3D0E45','#B04FC9'],['#0D3A43','#2FA3A8'],['#2A1A5E','#8E6BFF'],['#40140F','#D9643A'],['#11324A','#4FA0D8'],['#33104E','#C26BFF']];
 function mountCgRing(){
-  const wrap = $('#cgRing'), ring = $('#cgRingIn'); if (!wrap || wrap.dataset.on) return; wrap.dataset.on = 1;
-  const items = $$('.cg-ri', ring), n = items.length, R0 = cgRingList(), step = 360 / n;
-  let RR = 0, rot = 0, vel = 0, drag = false, lx = 0, moved = 0, last = -9999, front = -1;
-  const place = () => { const w = wrap.clientWidth < 560 ? 150 : 230; RR = Math.round(w * .7 / Math.sin(Math.PI / n)); };
-  place(); addEventListener('resize', place);
-  const info = i => { const p = R0[i], el = $('#cgRingInfo'); if (!p || !el) return;
-    el.innerHTML = `<small class="num">${String(i + 1).padStart(2, '0')} / ${String(n).padStart(2, '0')}</small><b>${esc(p.name)}</b><span class="num">${from(p)}${fmt(p.price)}</span><button class="btn w sm" data-pid="${p.id}">View in 3D${I.fwd}</button>`;
-    if (!reduce) el.animate([{ opacity:.2, transform:'translateY(6px)' }, { opacity:1, transform:'none' }], { duration:380, easing:'cubic-bezier(.22,1,.36,1)' }); };
-  let vis = true, intro = !reduce; new IntersectionObserver(es => { vis = es[0].isIntersecting; if (vis && intro){ intro = false; vel = -9; last = performance.now(); } }).observe(wrap);
-  const loop = now => {
-    requestAnimationFrame(loop); if (!vis || W.page !== 'catalog' || CG.view !== 'browse') return;
-    if (!drag){ if (Math.abs(vel) > .03){ rot += vel; vel *= .94; last = now; } else if (now - last < 2400){ rot += (Math.round(rot / step) * step - rot) * .08; } else if (!reduce) rot -= .1; }
-    ring.style.transform = `translateZ(${-RR}px) rotateY(${rot}deg)`;
-    const idx = ((Math.round(-rot / step) % n) + n) % n;
-    items.forEach((el, i) => { const a = ((i * step + rot) % 360 + 540) % 360 - 180, c = Math.cos(a * Math.PI / 180), v = Math.max(0, (c - .25) / .75); el.style.opacity = Math.min(1, .25 + v).toFixed(2); el.style.visibility = v < .02 ? 'hidden' : ''; el.style.filter = reduce ? '' : `blur(${((1 - v) * 3.5).toFixed(1)}px) brightness(${(.5 + .5 * v).toFixed(2)})`; el.style.transform = `rotateY(${(i * step).toFixed(2)}deg) translateZ(${RR}px) rotateY(${(-(i * step + rot)).toFixed(2)}deg)`; el.classList.toggle('front', i === idx); });
-    if (idx !== front){ front = idx; info(idx); }
+  const root = $('#cgRing'); if (!root || root.dataset.on) return; root.dataset.on = 1;
+  const items = $$('.dcx-it', root), dots = $$('.dcx-dots i', root), R0 = cgRingList(), N = items.length, ghost = $('#dcxGhost');
+  let active = 0, locked = false, timer = 0, vis = false, hover = false;
+  const roleFor = off => off === 0 ? 'center' : off === 1 ? 'right' : off === N - 1 ? 'left' : off === 2 ? 'back-r' : off === N - 2 ? 'back-l' : 'hidden';
+  const info = () => { const p = R0[active], el = $('#cgRingInfo'); if (!p || !el) return;
+    el.innerHTML = `<small class="num">${String(active + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}</small><b>${esc(p.name)}</b><span class="num">${from(p)}${fmt(p.price)}</span><button class="btn w sm" data-pid="${p.id}">View in 3D${I.fwd}</button>`;
+    if (!reduce) el.animate([{ opacity:0, transform:'translate(-50%,8px)' }, { opacity:1, transform:'translate(-50%,0)' }], { duration:450, easing:'cubic-bezier(.22,1,.36,1)' }); };
+  const render = () => {
+    items.forEach((el, i) => { const role = roleFor((i - active + N) % N); el.dataset.role = role;
+      role === 'center' ? el.setAttribute('data-pid', R0[i].id) : el.removeAttribute('data-pid');
+      el.tabIndex = role === 'center' ? 0 : -1; el.setAttribute('aria-hidden', String(role !== 'center')); });
+    dots.forEach((d, i) => d.classList.toggle('on', i === active));
+    const [a, b] = DCX_BG[active % DCX_BG.length]; root.style.setProperty('--dc1', a); root.style.setProperty('--dc2', b);
+    const p = R0[active]; ghost.textContent = (p.brand || CATN[p.cat] || 'iSell').toUpperCase();
+    if (!reduce) ghost.animate([{ opacity:0, transform:'translate(-50%,-50%) scale(1.08)', filter:'blur(8px)' }, { opacity:1, transform:'translate(-50%,-50%) scale(1)', filter:'blur(0)' }], { duration:700, easing:'cubic-bezier(.22,1,.36,1)' });
+    info();
   };
-  requestAnimationFrame(loop);
-  wrap.addEventListener('pointerdown', e => { drag = true; lx = e.clientX; moved = 0; vel = 0; wrap.setPointerCapture(e.pointerId); });
-  wrap.addEventListener('pointermove', e => { if (!drag) return; const d = e.clientX - lx; lx = e.clientX; moved += Math.abs(d); rot += d * .3; vel = d * .3; last = performance.now(); if (moved > 8) W.dragged = true; });
-  const up = () => { if (!drag) return; drag = false; last = performance.now(); setTimeout(() => W.dragged = false, 60); };
-  wrap.addEventListener('pointerup', up); wrap.addEventListener('pointercancel', up);
-  wrap.addEventListener('keydown', e => { if (e.key === 'ArrowLeft'){ rot += step; last = performance.now(); } if (e.key === 'ArrowRight'){ rot -= step; last = performance.now(); } });
+  const go = (dir, to) => { if (locked) return; locked = true; active = to !== undefined ? to : (active + (dir > 0 ? 1 : N - 1)) % N; render(); setTimeout(() => locked = false, 650); auto(); };
+  const auto = () => { clearTimeout(timer); if (reduce) return; timer = setTimeout(() => { if (vis && !hover && !document.hidden && W.page === 'catalog' && CG.view === 'browse') go(1); else auto(); }, 4200); };
+  root.addEventListener('click', e => { const b = e.target.closest('.dcx-btn'); if (b){ go(+b.dataset.dir); return; }
+    const it = e.target.closest('.dcx-it'); if (it && it.dataset.role !== 'center'){ const off = (+it.dataset.i - active + N) % N; go(off <= N / 2 ? 1 : -1, +it.dataset.i); } });
+  root.addEventListener('keydown', e => { if (e.key === 'ArrowRight'){ e.preventDefault(); go(1); } if (e.key === 'ArrowLeft'){ e.preventDefault(); go(-1); } });
+  let x0 = null; root.addEventListener('pointerdown', e => { x0 = e.clientX; });
+  root.addEventListener('pointerup', e => { if (x0 !== null && Math.abs(e.clientX - x0) > 40){ W.dragged = true; setTimeout(() => W.dragged = false, 60); go(e.clientX < x0 ? 1 : -1); } x0 = null; });
+  root.addEventListener('pointerenter', () => hover = true); root.addEventListener('pointerleave', () => hover = false);
+  new IntersectionObserver(es => vis = es[0].isIntersecting).observe(root);
+  render(); auto();
 }
 
 /* flip-book: pages turn in 3D about the spine; two pages on wide screens, one on phones */
