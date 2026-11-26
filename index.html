@@ -1,5 +1,8 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://us-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https://images.pexels.com https://asctcxkbhfigfdggksgi.supabase.co; media-src 'self' blob:; connect-src 'self' https://asctcxkbhfigfdggksgi.supabase.co wss://asctcxkbhfigfdggksgi.supabase.co https://us.i.posthog.com https://us-assets.i.posthog.com; worker-src 'self' blob:; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>iSell Innovations · Your Tech Plug</title>
 <meta name="description" content="iSell Innovations Ltd, Lusaka: electronic gadgets, repairs, IT services, pawning and auctioning. Rotana Mall and Liberty Mall. Browse the live catalog.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -318,7 +321,7 @@ svg{flex:none}
 .calc{display:flex;align-items:center;gap:12px;margin-top:14px;padding:16px 16px 16px 22px;border-radius:22px;flex-wrap:wrap}
 .calc label{font-size:14px;color:var(--ink2)}
 .calc input{flex:1;min-width:120px;height:46px;padding:0 16px;border-radius:14px;border:1px solid var(--line2);background:#fff;font-weight:600}
-.calc input:focus{outline:none;border-color:var(--p2)}
+.calc input:focus{outline:none;border-color:var(--p2);box-shadow:0 0 0 4px rgba(125,75,219,.18)}
 .calc output{font:600 18px var(--f-ui);color:var(--p);min-width:110px}
 
 /* pay + services */
@@ -420,7 +423,7 @@ svg{flex:none}
 .earn b{color:var(--p)}
 .promo{display:flex;gap:8px}
 .promo input{flex:1;min-width:0;height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);background:#fff}
-.promo input:focus{outline:none;border-color:var(--p2)}
+.promo input:focus{outline:none;border-color:var(--p2);box-shadow:0 0 0 4px rgba(125,75,219,.18)}
 .box{padding:18px;border-radius:22px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column;gap:12px}
 .box h4{font-size:16px;letter-spacing:-.02em}
 .choice{display:flex;flex-direction:column;gap:8px}

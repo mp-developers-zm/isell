@@ -1,5 +1,8 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://us-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https://images.pexels.com https://asctcxkbhfigfdggksgi.supabase.co; media-src 'self' blob:; connect-src 'self' https://asctcxkbhfigfdggksgi.supabase.co wss://asctcxkbhfigfdggksgi.supabase.co https://us.i.posthog.com https://us-assets.i.posthog.com; worker-src 'self' blob:; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>iSell Admin</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -411,6 +414,7 @@ td .two b{display:block;font-weight:600}
 <div class="tip" id="tip" role="status"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div id="receipt"></div>
+<script>/* clickjacking guard: the admin page refuses to run inside another site's frame */if (window.top !== window.self && /github\.io$/.test(location.hostname)) { document.documentElement.style.display = 'none'; try { window.top.location = window.self.location.href; } catch (e) {} }</script>
 <script>
 'use strict';
 /* iSell Admin — by M&P Developers. Staff sign in with Supabase Auth; every read and write goes through the
