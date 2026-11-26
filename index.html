@@ -1974,6 +1974,26 @@ body:has(.cg-tray.on) .dotx{bottom:96px}
 .nw-rail{padding-top:22px;padding-bottom:96px;margin-top:-16px;margin-bottom:-66px}
 .ap-hero{overflow:visible;overflow-x:clip}
 @media (prefers-reduced-motion:reduce){.nw-card,.nw-cap,.nw-no,.nw-img{transform:none}}
+
+/* ===== clients: logos on 3D liquid-glass tiles ===== */
+.cl-grid .tile.cl{min-height:190px;justify-content:space-between;gap:14px;padding:18px 18px 16px;border-radius:26px;transform-style:preserve-3d;background:linear-gradient(135deg,rgba(255,255,255,.86),rgba(255,255,255,.46) 55%,rgba(236,226,255,.62))!important;box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),inset 0 -12px 26px -16px rgba(125,75,219,.35),0 26px 46px -30px rgba(40,15,90,.5)!important}
+.cl-logo{position:relative;display:grid;place-items:center;height:78px;transform:translateZ(46px);animation:clFloat 6s ease-in-out infinite;animation-delay:calc(var(--d) * -.9s)}
+.cl-logo img{max-height:64px;max-width:62%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(33,19,54,.22)) drop-shadow(0 2px 2px rgba(33,19,54,.18))}
+.cl-logo::after{content:"";position:absolute;left:24%;right:24%;bottom:-10px;height:10px;border-radius:50%;background:radial-gradient(closest-side,rgba(40,15,90,.22),transparent);transform:translateZ(-46px)}
+.cl-mono{display:grid;place-items:center;width:70px;height:70px;border-radius:22px;font:700 20px var(--f-d,var(--f-ui));font-style:normal;letter-spacing:-.02em;color:#fff;background:linear-gradient(180deg,rgba(146,104,240,.96),rgba(98,52,176,.96) 55%,rgba(78,38,150,.98));box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -4px 10px rgba(40,10,90,.35),0 14px 24px -12px rgba(91,46,158,.8)}
+.cl-txt{transform:translateZ(22px)}
+.cl-txt b{display:block;font:600 clamp(16px,1.5vw,19px)/1.2 var(--f-d);letter-spacing:-.02em;color:var(--hxk)}
+.cl-txt small{display:block;margin-top:3px;font:500 11px var(--f-ui);letter-spacing:.16em;text-transform:uppercase;color:var(--hxp)}
+@keyframes clFloat{0%,100%{translate:0 0}50%{translate:0 -6px}}
+
+/* ===== hero headline: 3D liquid-glass lettering ===== */
+.ap-h1{position:relative;color:transparent;background:linear-gradient(180deg,#FFFFFF 0%,#EFE7FF 22%,#BFA5FF 48%,#7D4BDB 74%,#3E1690 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-stroke:1.4px rgba(255,255,255,.75);
+  filter:drop-shadow(0 1px 0 #B49AFA) drop-shadow(0 2px 0 #9670EE) drop-shadow(0 3px 0 #7B50DC) drop-shadow(0 4px 0 #5B2E9E) drop-shadow(0 22px 26px rgba(60,25,130,.38));padding-bottom:.06em}
+.ap-h1::before,.ap-h1::after{content:attr(data-t);position:absolute;inset:0;padding-bottom:inherit;color:transparent;-webkit-text-stroke:0;-webkit-background-clip:text;background-clip:text;pointer-events:none}
+.ap-h1::before{background-image:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.55) 30%,rgba(255,255,255,0) 52%)}
+.ap-h1::after{background-image:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.95) 48%,rgba(255,255,255,0) 58%);background-repeat:no-repeat;background-size:250% 100%;background-position:150% 0;animation:h1Shine 6s ease-in-out 1.2s infinite}
+@keyframes h1Shine{0%{background-position:150% 0}45%,100%{background-position:-60% 0}}
+@media (prefers-reduced-motion:reduce){.ap-h1::after,.cl-logo{animation:none}}
 </style></head><body>
 <div id="splash"><div id="splashLogo"></div></div>
 <div class="announce" aria-label="Store news"><div id="annc"></div></div>
@@ -3560,13 +3580,13 @@ function secProfile(){
   ];
     const values = [['Customer first','Every sale and every repair starts with what you need.'],['Innovation','New technology, new ideas, better ways to serve.'],['Effective & efficient delivery','The right product, on time, every time.'],['Transparency','Clear prices, honest advice and open dealings.'],['Team work','One team across both of our shops.'],['Business integrity','High ethics are our company culture.']];
   const brands = ['Samsung','Apple','Lenovo','HP','Microsoft','Dell','Canon','Infinix','Huawei'];
-  const clients = [['First Quantum Mining'],['Fast Mobile Centre'],['Reload Logistics'],['Cgrate Zambia (543)'],['Ministry of Health'],['Archdiocese of Lusaka']];
+  const clients = [['First Quantum Mining','first-quantum.svg','Mining'],['Fast Mobile Centre',null,'Retail'],['Reload Logistics','reload-logistics.svg','Logistics'],['Cgrate Zambia (543)','cgrate-543.svg','Payments'],['Ministry of Health','ministry-of-health.webp','Government'],['Archdiocese of Lusaka','archdiocese-lusaka.webp','Faith']];
   const comp = [['PACRA','Registration No.','120170002339'],['ZRA','Tax Identification No.','1004130848'],['ZPPA','Registration No.','34635'],['ZICTA','Dealership Licence','SET/RDL/3624']];
   const facts = [['Founded','22 March 2017'],['Ownership','Fully Zambian'],['Shops','Rotana Mall & Liberty Mall'],['Registered','PACRA, ZRA, ZPPA'],['Licensed','ZICTA dealer'],['Brands','Samsung, Apple, HP & more']];
   return `<div class="ap">  <section class="ap-hero" id="pfHero">
     <div class="wrap">
       <p class="ap-kick rv">iSell Innovations</p>
-      <h1 class="ap-h1 rv d1">Your tech plug.</h1>
+      <h1 class="ap-h1 rv d1" data-t="Your tech plug.">Your tech plug.</h1>
       <p class="ap-sub rv d2">Genuine gadgets, expert repairs and IT services. Zambian-owned, in Lusaka since 2017.</p>
       <div class="ap-cta rv d2"><a class="ap-btn" href="#/catalog">Shop the catalog</a><a class="ap-lnk" href="#/services">Explore services ›</a></div>
     </div>
@@ -3611,7 +3631,7 @@ function secProfile(){
     <div class="sl-brands"><div>${[...brands, ...brands].map(b => `<span>${b}</span>`).join('')}</div></div>`)}
 
   ${slide('clients', 'Our clients', `<div class="sl-top"><h2 class="sl-h rv">Trusted by industry leaders</h2><p class="sl-p rv d1">Since our establishment we have grown steadily across many industries. Our portfolio of clients is not limited to the ones below.</p></div>
-    <div class="sl-tiles six rv">${clients.map(([a], i) => `<div class="tile cl" data-tilt><b>${a}</b></div>`).join('')}</div>`)}
+    <div class="sl-tiles six rv cl-grid">${clients.map(([a, logo, sector], i) => `<div class="tile cl" data-tilt style="--d:${i}"><span class="cl-logo">${logo ? `<img src="img/clients/${logo}" alt="${esc(a)} logo" loading="lazy" decoding="async" draggable="false">` : `<i class="cl-mono" aria-hidden="true">FMC</i>`}</span><span class="cl-txt"><b>${a}</b><small>${sector}</small></span></div>`).join('')}</div>`)}
 
   ${slide('compliance', 'Compliance', `<div class="sl-top"><h2 class="sl-h rv">Our compliance</h2><p class="sl-p rv d1">A private limited company that meets all compliance requirements. Registration documents are available to any customer on request.</p></div>
     <div class="sl-tiles four rv">${comp.map(([a, b, n], i) => `<div class="tile"><b class="num sm">${n}</b><span>${a} · ${b}</span>${I.check}</div>`).join('')}</div>`)}
