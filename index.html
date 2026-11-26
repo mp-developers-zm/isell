@@ -1890,7 +1890,8 @@ body::before{content:"";position:fixed;inset:-15%;z-index:-1;pointer-events:none
   .nw-ask{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}
 }
 
-/* contact: Dot says hi */
+/* contact: its own page; Dot says hi */
+.ct #contact{padding-top:clamp(12px,2vw,24px);padding-bottom:clamp(30px,5vw,60px)}
 .hx-talk-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
 .hx-talk-top .hx-tw{min-width:0}
 .hx-talk-dot{flex:none;width:clamp(58px,7.5vw,112px);margin:0 clamp(0px,2vw,30px) clamp(26px,4vw,44px) 0}
@@ -2521,7 +2522,7 @@ function renderAll(){
   $('#tSearch').innerHTML = I.search; $('#tAcct').innerHTML = I.user; $('#tMenu').innerHTML = `${I.menu}<span class="mlbl">Menu</span><i class="mdot"></i>`;
   $('#tCart').innerHTML = `<span class="lbl2">Cart</span><i>${I.bag}<span class="badge num" data-n="${count()}">${count()}</span></i>`;
   const pg = (k, html) => `<div class="spage" data-page="${k}" hidden>${html}</div>`;
-  $('#main').innerHTML = pg('home', secProfile()) + pg('services', secServicesPage()) + pg('catalog', `<div class="pg-top"></div>` + secCatalog())
+  $('#main').innerHTML = pg('home', secProfile()) + pg('services', secServicesPage()) + pg('contact', `<div class="pg-top"></div>` + secContact()) + pg('catalog', `<div class="pg-top"></div>` + secCatalog())
     + pg('categories', `<div class="pg-top"></div>` + secCats() + secAudio())
     + pg('shop', `<div class="pg-top"></div>` + secShop())
     + pg('deals', `<div class="pg-top"></div>` + secDeals() + secDealsAll())
@@ -3496,8 +3497,8 @@ const CO = {
   phones:[['+260 965 088 880','+260965088880'],['+260 978 088 880','+260978088880'],['+260 976 084 760','+260976084760']],
   email:'isellinnovations@gmail.com'
 };
-Object.assign(PAGES, { catalog:'Catalog', services:'Services' });
-Object.assign(ROUTES, { catalog:['catalog'], shop:['catalog'], about:['home','about'], what:['home','what'], services:['services'], repairs:['services','sv-repair'], 'it-services':['services','sv-network'], pawning:['services','sv-pawn'], ethics:['home','ethics'], contact:['home','contact'], visit:['home','contact'], vision:['home','vision'], products:['home','products'], clients:['home','clients'] });
+Object.assign(PAGES, { catalog:'Catalog', services:'Services', contact:'Contact' });
+Object.assign(ROUTES, { catalog:['catalog'], shop:['catalog'], about:['home','about'], what:['home','what'], services:['services'], repairs:['services','sv-repair'], 'it-services':['services','sv-network'], pawning:['services','sv-pawn'], ethics:['home','ethics'], contact:['contact'], visit:['contact'], vision:['home','vision'], products:['home','products'], clients:['home','clients'] });
 
 /* ---------------- home: introducing iSell Innovations (company profile 2026) ---------------- */
 const pfChk = ic('<path d="m6 12.5 4 4 8-9"/>');
@@ -3581,6 +3582,11 @@ function secProfile(){
   ${slide('compliance', 'Compliance', `<div class="sl-top"><h2 class="sl-h rv">Our compliance</h2><p class="sl-p rv d1">A private limited company that meets all compliance requirements. Registration documents are available to any customer on request.</p></div>
     <div class="sl-tiles four rv">${comp.map(([a, b, n], i) => `<div class="tile"><b class="num sm">${n}</b><span>${a} · ${b}</span>${I.check}</div>`).join('')}</div>`)}
 
+  </div>`;
+}
+/* ---------------- Contact: its own page ---------------- */
+function secContact(){
+  return `<div class="hx ct">
   <section class="wrap hx-sec" id="contact">
     <div class="hx-talk">
       <div class="hx-talk-bg" aria-hidden="true"><img ${hq('tower', null)} alt="" loading="lazy"></div>
