@@ -1937,6 +1937,8 @@ body:has(.cg-tray.on) .dotx{bottom:96px}
 .ap-btn,.sp-btn,.hx-pill.dk,.btn.pri,.cg-help,.bd-cta,.pz-cta,.chip.on,.cg-vp,.pawn-lab,.nw-ask,.dotx-a.pri{background:#2B1652!important;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none!important;color:#fff;filter:none}
 .ap-btn:hover,.sp-btn:hover,.hx-pill.dk:hover,.btn.pri:hover,.nw-ask:hover,.dotx-a.pri:hover{background:#3D2370!important;filter:none}
 .btn.pri:active{transform:translateY(1px)}
+.sl-cat-o .ph img{animation:none}
+.sl-cat:hover .sl-cat-o .ph img{transform:scale(1.04)}
 </style></head><body>
 <div id="splash"><div id="splashLogo"></div></div>
 <div class="announce" aria-label="Store news"><div id="annc"></div></div>
@@ -3514,11 +3516,10 @@ const slide = (id, lab, body) => `<section class="wrap hx-sec" id="${id}"><div c
 const tile = (n, l) => { const m = String(n).match(/^(\d+)(\+?)$/); return `<div class="tile"><b class="num"${m ? ` data-count="${m[1]}" data-suf="${m[2]}"` : ''}>${n}</b><span>${l}</span></div>`; };
 const hxLab = t => `<div class="hx-lab rv"><span>${t}</span><i></i><b>${pfPhone}</b></div>`;
 function secProfile(){
-  const show = pfShow();
   const words = 'Be an industry leader in the electronics supply value chain, quality service delivery, uniting technology innovation with people and businesses globally.'.split(' ');
   const what = [
-    { k:'gadgets', ico:pfPhone, t:'Gadget supply', d:'Phones, laptops, desktops, printers, projectors and network gear from the world’s leading brands, with warranty.', go:'#/catalog', cta:'Open the catalog', prods:show.slice(0, 3) },
-    { k:'repair', ico:pfWrench, obj:P.find(p => p.cat === 'computers'), t:'Repairs & maintenance', d:'Computer hardware repairs, printer maintenance and computer system management by our own technicians.', go:'#/repairs', cta:'See repairs' },
+    { k:'gadgets', src:'img/new-iphone18-pro-colours.webp', ico:pfPhone, t:'Gadget supply', d:'Phones, laptops, desktops, printers, projectors and network gear from the world’s leading brands, with warranty.', go:'#/catalog', cta:'Open the catalog' },
+    { k:'repair', ico:pfWrench, t:'Repairs & maintenance', d:'Computer hardware repairs, printer maintenance and computer system management by our own technicians.', go:'#/repairs', cta:'See repairs' },
     { k:'it', ico:pfNet, t:'IT services', d:'Networking and configuration, software installations and upgrades, and IT consulting for businesses.', go:'#/it-services', cta:'See IT services' },
     { k:'finance', ico:pfCoin, t:'Pawning, auctions & micro finance', d:'Flexible ways to get value from your gadgets and to own the technology you need.', go:'#/pawning', cta:'See pawning' }
   ];
@@ -3547,7 +3548,7 @@ function secProfile(){
 
   ${slide('what', 'What we do', `<div class="sl-top"><h2 class="sl-h rv">What we do</h2><p class="sl-p rv d1">Our core business is electronic gadgets supply, electronics repairs, pawning, auctioning and micro finance, delivered with service that sets us apart.</p></div>
     <div class="sl-cats">${what.map((w, i) => `<a class="sl-cat rv d${i % 4}" id="do-${w.k}" href="${w.go}"><b>${w.t}</b><p>${w.d}</p>
-      <div class="sl-cat-o">${w.prods ? `<span class="blob"></span><img ${im(w.prods[0])} alt="" loading="lazy">` : w.obj ? `<span class="blob"></span><img ${im(w.obj)} alt="" loading="lazy">` : `<span class="ph"><img ${hq(w.k)} alt="" loading="lazy"></span>`}</div><em>${w.cta} ${pfArr}</em></a>`).join('')}</div>`)}
+      <div class="sl-cat-o"><span class="ph"><img ${w.src ? `src="${w.src}" style="object-position:50% 62%"` : hq(w.k)} alt="" loading="lazy" decoding="async"></span></div><em>${w.cta} ${pfArr}</em></a>`).join('')}</div>`)}
 
   ${slide('numbers', 'iSell in numbers', `<div class="sl-num">
       <div class="sl-num-l"><h2 class="sl-h rv">iSell in numbers</h2><p class="sl-p rv d1">Top quality electronics from the world’s leading brands, with warranty and a product lifespan guarantee.</p>
