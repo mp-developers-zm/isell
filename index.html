@@ -3592,7 +3592,7 @@ function mountServicesPage(){
 }
 
 /* ---------------- catalog ---------------- */
-const CG = { q:'', cat:'all', brand:'all', range:'all', sort:'featured', stock:false, cmp:[], view:'browse', limit:24 };
+const CG = { q:'', cat:'all', brand:'all', range:'all', sort:'featured', stock:false, cmp:[], view:'browse', limit:500 };
 const CG_RANGES = [['all','Any price'],['0-1000','Under K1,000'],['1000-5000','K1,000 to K5,000'],['5000-20000','K5,000 to K20,000'],['20000-1e9','Over K20,000']];
 let MYL = load('isellweb2.mylist', []);
 const saveMyl = () => { MYL = MYL.filter(id => byId(id)).slice(0, 60); try { localStorage.setItem('isellweb2.mylist', JSON.stringify(MYL)); } catch (e) {} };
@@ -3837,11 +3837,11 @@ function mountCatalog(){
   if (!$('#catalog')) return;
   $('#cgSort').value = CG.sort;
   mountCgRing(); cgTray(); requestAnimationFrame(cgPill); addEventListener('resize', cgPill);
-  let qt; $('#cgQ').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(() => { CG.q = e.target.value.slice(0, 40); CG.limit = 24; cgRefresh(true); }, 160); });
+  let qt; $('#cgQ').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(() => { CG.q = e.target.value.slice(0, 40); CG.limit = 500; cgRefresh(true); }, 160); });
   document.addEventListener('change', e => {
     const id = e.target.id; if (!['cgBrand','cgRange','cgSort','cgStock'].includes(id)) return;
     if (id === 'cgBrand') CG.brand = e.target.value; if (id === 'cgRange') CG.range = e.target.value; if (id === 'cgSort') CG.sort = e.target.value; if (id === 'cgStock') CG.stock = e.target.checked;
-    CG.limit = 24; cgRefresh();
+    CG.limit = 500; cgRefresh();
   });
   let lastTwo = innerWidth > 860; addEventListener('resize', () => { const t = innerWidth > 860; if (t !== lastTwo && $('#fb')){ lastTwo = t; const pi = FB.two ? FB.i * 2 : FB.i; FB.i = t ? Math.ceil(pi / 2) : Math.max(0, pi - 1); mountBook(); } });
   addEventListener('keydown', e => {
@@ -3851,7 +3851,7 @@ function mountCatalog(){
   });
   $('#cgm').addEventListener('click', e => { if (e.target.id === 'cgm') cgClose(); });
 }
-function cgSetCat(k){ CG.cat = k; CG.limit = 24; if (CG.view !== 'browse') cgView('browse'); cgRefresh(true); }
+function cgSetCat(k){ CG.cat = k; CG.limit = 500; if (CG.view !== 'browse') cgView('browse'); cgRefresh(true); }
 
 // catalog clicks (run before the site's own click handler)
 document.addEventListener('click', e => {
@@ -3867,7 +3867,7 @@ document.addEventListener('click', e => {
   switch (a.dataset.cg){
     case 'cat': cgSetCat(a.dataset.k); return;
     case 'more': CG.limit += 24; cgRefresh(true); return;
-    case 'reset': Object.assign(CG, { q:'', cat:'all', brand:'all', range:'all', stock:false, limit:24 }); $('#cgQ').value = ''; $('#cgBrand').value = 'all'; $('#cgRange').value = 'all'; $('#cgStock').checked = false; cgRefresh(true); return;
+    case 'reset': Object.assign(CG, { q:'', cat:'all', brand:'all', range:'all', stock:false, limit:500 }); $('#cgQ').value = ''; $('#cgBrand').value = 'all'; $('#cgRange').value = 'all'; $('#cgStock').checked = false; cgRefresh(true); return;
     case 'cmp': { const i = CG.cmp.indexOf(id); if (i >= 0) CG.cmp.splice(i, 1); else { if (CG.cmp.length >= 3){ toast('You can compare up to 3. Remove one first.'); return; } CG.cmp.push(id); }
       $$(`.cg-cmp[data-id="${id}"]`).forEach(b => { const on = CG.cmp.includes(id); b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); b.innerHTML = `${on ? I.check : cgIco.cmp}<span>${on ? 'Comparing' : 'Compare'}</span>`; }); cgTray(); } return;
     case 'cmpclear': CG.cmp = []; $$('.cg-cmp.on').forEach(b => { b.classList.remove('on'); b.setAttribute('aria-pressed', false); b.innerHTML = `${cgIco.cmp}<span>Compare</span>`; }); cgTray(); return;
